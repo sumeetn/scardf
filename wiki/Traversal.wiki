@@ -9,24 +9,31 @@ given( name( jdoe ) )
 
 Another way is with a slash operator, like in XPath. You can connect these operations to form a path expression:
 {{{
-jdoe/name/given
+jdoe/Name/Given
 }}}
 
 This actually gives you a sequence of RDF node objects, which may be empty, or a single node, or multiple nodes. To convert a node list to a string, you use the same slash operator, but now with a converter:
 {{{
-jdoe/name/given/asString == "John"
+jdoe/Name/Given/asString == "John"
 }}}
 
 Of course, this would only work if the node list contains a single node, a literal convertible to string. If you expect multiple results, there are converters that return a list of objects from yielded literal nodes.
 
 There are other converters:
 {{{
-jdoe/isMale/asBoolean == true
-jdoe/heightCm/asInt == 167
-jdoe/birthday/asLocalDate == new LocalDate( 1977, 7, 27 )
+jdoe/IsMale/asBoolean == true
+jdoe/Height/asInt == 167
+jdoe/Birthday/asLocalDate == new LocalDate( 1977, 7, 27 )
+}}}
+
+Boolean expressions in Scardf have different, natural forms. Following expressions all return `true`:
+{{{
+jdoe/IsMale?
+jdoe has Height -> 167
+jdoe( Likes -> Science )?
 }}}
 
 Another type you can use with a slash operator is a language extractor, useful for multilingual literals:
 {{{
-jdoe/title/Lang.en
+jdoe/Title/Lang.en
 }}}
