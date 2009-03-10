@@ -1,0 +1,21 @@
+#summary Overview of DSL features of Scardf
+
+= Introduction =
+
+Basic use cases of the API are:
+ * Defining RDF *vocabularies*
+ * *Building* RDF graphs
+ * *Traversing* RDF graphs
+ * *Querying* RDF graphs
+
+
+== Defining a vocabulary ==
+
+
+== Building a graph ==
+
+
+== Traversing a graph ==
+
+
+== Querying a graph ==
