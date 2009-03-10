@@ -11,11 +11,40 @@ Basic use cases of the API are:
 
 == Defining a vocabulary ==
 
+{{{
+object ExampleVocabulary extends Vocabulary( "http://example.org#" ) {
+  val rClass = pRes( "Class" )
+  val rInstance = pRes( "Instance" ) a rClass
+  val pTitle = pProp( "title" )
+}
+}}}
 
 == Building a graph ==
 
+{{{
+implicit val model = new RModel withPrefix "http://example.org/no2#"
+import com.hp.hpl.jena.vocabulary.VCARD._
+val john = Res( "jsmith" ) state(
+  FN -> "John Smith",
+  N -> Anon(
+    Given -> "John",
+    Family -> "Smith"
+  ),
+  BDAY -> "1977-07-27"
+)
+}}}
 
 == Traversing a graph ==
 
+{{{
+  john/N/Given/asString must_== "John"
+  john/BDAY/asLocalDate must_== new LocalDate( 1975, 5, 27 )
+}}}
 
 == Querying a graph ==
+
+{{{
+  val x = new QVar
+  val entryResQ = Sparql selectRes x where( (x, title, "Overview") )
+}}}
+
