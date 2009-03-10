@@ -70,12 +70,12 @@ Another type you can use with a slash operator is a language extractor, useful f
   val entryResQ = Sparql selectRes x where( (x, title, "Overview") )
 }}}
 
-|| Scardf expression || description ||
+|| *Scardf expression* || *description* ||
 || {{{select}}} _variables_ {{{where}}} _conditions_ || ||
-|| `selectRes _var_ where _conditions_`   || ||
-|| selectAll var where || || 
-|| extractRes res where || || 
+|| <code>selectRes _var_ where _conditions_</code> || ||
+|| *selectAll* var *where* conditions *from* model || || 
+|| extractRes _res_ where _conditions_ from _model_ || || 
 || extractResList res where || || 
-|| describe var where || || 
+|| describe _var_ where _conditions_  || || 
 || descriptionOf res || subgraph of res || 
 || construct triplets where || || 
