@@ -36,9 +36,31 @@ val john = Res( "jsmith" ) state(
 
 == Traversing a graph ==
 
+Reading a property from a RDF resource is simple:
 {{{
-  john/N/Given/asString must_== "John"
-  john/BDAY/asLocalDate must_== new LocalDate( 1975, 5, 27 )
+  N valueOf john
+}}}
+
+But a more readable way is with a slash operator, like in XPath. You can even stack the properties to form a path:
+{{{
+  john/N/Given
+}}}
+
+But this actually gives you a sequence of RDF node objects, which may be empty, or a single node, or multiple nodes. To convert a node list to a string, you use the same slash operator, but now with a converter:
+{{{
+  john/N/Given/asString == "John"
+}}}
+
+Of course, this would only work if the node list contains a single node, a literal convertible to string.
+
+You can use more converters:
+{{{
+  john/BDAY/asLocalDate == new LocalDate( 1975, 5, 27 )
+}}}
+
+Another type you can use with a slash operator is a language extractor, useful for multilingual literals:
+{{{
+  john/title/Lang.en
 }}}
 
 == Querying a graph ==
@@ -47,4 +69,3 @@ val john = Res( "jsmith" ) state(
   val x = new QVar
   val entryResQ = Sparql selectRes x where( (x, title, "Overview") )
 }}}
-
