@@ -6,7 +6,7 @@ Basic use cases of the API are:
  * *Traversing* RDF graphs
  * *Querying* RDF graphs
 
-== Defining a vocabulary ==
+== Defining a [vocabulary] ==
 
 {{{
 object PeopleVocabulary extends Vocabulary( "person:" ) {
@@ -25,7 +25,7 @@ object PeopleVocabulary extends Vocabulary( "person:" ) {
 }
 }}}
 
-== Building a graph ==
+== [Building] a graph ==
 
 {{{
 implicit val model = new RModel withPrefix "example:"
@@ -45,7 +45,7 @@ val jdoe = Res( "jdoe" ) a Person state(
 
 == Traversing a graph ==
 
-A graph can be [Traversal traversed] with a slash operator forming XPath-like expressions:
+A graph can be [Traversal traversed] with a slash operator forming an XPath-like expressions:
 {{{
 jdoe/Name/Given
 }}}
@@ -63,8 +63,7 @@ val x = new QVar
 Sparql selectRes x where( (x, Height, 167) ) from model == Some( jdoe )
 }}}
 
-This query expression forms a Sparql query string
+This query expression forms a Sparql query string:
 {{{
-Query = SELECT ?v1 WHERE { ?v1 <person:Height> 167. }
+SELECT ?v1 WHERE { ?v1 <person:Height> 167. }
 }}}
-
