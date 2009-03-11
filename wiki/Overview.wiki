@@ -14,13 +14,14 @@ object PeopleVocabulary extends Vocabulary( "person:" ) {
   val Name = pProp( "Name" )
   val Given = pProp( "Given" )
   val Family = pProp( "Family" )
-  val Birthday = pProp( "Birthday" )
-  val IsMale = pProp( "IsMale" )
-  val Height = pProp( "Height" )
-  val Likes = pProp( "Likes" )
-  val Swimming = pRes( "Swimming" )
-  val Science = pRes( "Science" )
-  val Spouse = pProp( "Spouse" )
+  val Birthday = pProp( "Birthday" ) withRange XSD.date
+  val IsMale = pProp( "IsMale" ) withRange XSD.xboolean
+  val Height = pProp( "Height" ) withRange XSD.xint
+  val Hobby = pRes( "Hobby" )
+  val Likes = pProp( "Likes" ) withRange Hobby
+  val Swimming = pRes( "Swimming" ) a Hobby
+  val Science = pRes( "Science" ) a Hobby
+  val Spouse = pProp( "Spouse" ) a Person
 }
 }}}
 
@@ -55,9 +56,15 @@ jdoe/Name/Given/asString == "John"
 }}}
 
 
-== Querying a graph ==
+== [Querying] a graph ==
 
 {{{
 val x = new QVar
 Sparql selectRes x where( (x, Height, 167) ) from model == Some( jdoe )
 }}}
+
+This query expression forms a Sparql query string
+{{{
+Query = SELECT ?v1 WHERE { ?v1 <person:Height> 167. }
+}}}
+
