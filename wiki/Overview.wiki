@@ -47,16 +47,7 @@ john/N/Given/asString == "John"
 == Querying a graph ==
 
 {{{
-  val x = new QVar
-  val entryResQ = Sparql selectRes x where( (x, title, "Overview") )
+val x = new QVar
+Sparql selectRes x where( (x, Height, 167) ) from model == Some( jdoe )
 }}}
 
-|| *Scardf expression* || *description* ||
-|| {{{select}}} _variables_ {{{where}}} _conditions_ || ||
-|| <code>selectRes _var_ where _conditions_</code> || ||
-|| *selectAll* var *where* conditions *from* model || || 
-|| extractRes _res_ where _conditions_ from _model_ || || 
-|| extractResList res where || || 
-|| describe _var_ where _conditions_  || || 
-|| descriptionOf res || subgraph of res || 
-|| construct triplets where || || 
