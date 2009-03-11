@@ -21,7 +21,7 @@ object PeopleVocabulary extends Vocabulary( "person:" ) {
   val Likes = pProp( "Likes" ) withRange Hobby
   val Swimming = pRes( "Swimming" ) a Hobby
   val Science = pRes( "Science" ) a Hobby
-  val Spouse = pProp( "Spouse" ) a Person
+  val Spouse = pProp( "Spouse" ) withRange Person
 }
 }}}
 
