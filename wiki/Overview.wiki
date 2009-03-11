@@ -60,10 +60,12 @@ jdoe/Name/Given/asString == "John"
 
 {{{
 val x = new QVar
-Sparql selectRes x where( (x, Height, 167) ) from model == Some( jdoe )
+Sparql selectRes x where( (x, Height, 167) ) from model
 }}}
 
 This query expression forms a Sparql query string:
 {{{
 SELECT ?v1 WHERE { ?v1 <person:Height> 167. }
 }}}
+
+The query is executed on the given model and it returns an option `Some( jdoe )`
