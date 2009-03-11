@@ -9,25 +9,36 @@ Basic use cases of the API are:
 == Defining a vocabulary ==
 
 {{{
-object ExampleVocabulary extends Vocabulary( "http://example.org#" ) {
-  val rClass = pRes( "Class" )
-  val rInstance = pRes( "Instance" ) a rClass
-  val pTitle = pProp( "title" )
+object PeopleVocabulary extends Vocabulary( "person:" ) {
+  val Person = pRes( "Person" )
+  val Name = pProp( "Name" )
+  val Given = pProp( "Given" )
+  val Family = pProp( "Family" )
+  val Birthday = pProp( "Birthday" )
+  val IsMale = pProp( "IsMale" )
+  val Height = pProp( "Height" )
+  val Likes = pProp( "Likes" )
+  val Swimming = pRes( "Swimming" )
+  val Science = pRes( "Science" )
+  val Spouse = pProp( "Spouse" )
 }
 }}}
 
 == Building a graph ==
 
 {{{
-implicit val model = new RModel withPrefix "http://example.org/no2#"
-import com.hp.hpl.jena.vocabulary.VCARD._
-val john = Res( "jsmith" ) state(
-  FN -> "John Smith",
-  N -> Anon(
+implicit val model = new RModel withPrefix "example:"
+import PeopleVocabulary._
+val jdoe = Res( "jdoe" ) a Person state(
+  Name -> Anon(
     Given -> "John",
-    Family -> "Smith"
+    Family -> "Doe"
   ),
-  BDAY -> "1977-07-27"
+  Birthday -> "1977-07-27",
+  Height -> 167,
+  IsMale -> true,
+  Likes -> Swimming,
+  Likes -> Science
 )
 }}}
 
@@ -35,12 +46,12 @@ val john = Res( "jsmith" ) state(
 
 A graph can be [Traversal traversed] with a slash operator forming XPath-like expressions:
 {{{
-john/N/Given
+jdoe/Name/Given
 }}}
 
 These yield a sequence of RDF node objects. To convert a node list to a string, you use the same slash operator, but now with a converter:
 {{{
-john/N/Given/asString == "John"
+jdoe/Name/Given/asString == "John"
 }}}
 
 
@@ -50,4 +61,3 @@ john/N/Given/asString == "John"
 val x = new QVar
 Sparql selectRes x where( (x, Height, 167) ) from model == Some( jdoe )
 }}}
-
