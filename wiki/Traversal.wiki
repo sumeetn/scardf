@@ -18,7 +18,7 @@ jdoe/Name/Given/asString == "John"
 Of course, this would only work if the node list contains a single node, a literal convertible to string. If you expect results of different cardinalities, you can manipulate a slash-operator result as a sequence of RDF nodes. 
 {{{
 ( jdoe/Spouse ).isEmpty
-for ( r <- jdoe/Likes ) println( r.uri )
+for ( r <- jdoe/Likes ) println( r )
 }}}
 
 There are also converters that return collections of specific Scala objects from contained nodes:
