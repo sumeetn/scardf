@@ -1,0 +1,34 @@
+#summary Constructing an RDF graph using Scardf
+
+{{{
+implicit val model = new RModel withPrefix "example:"
+import PeopleVocabulary._
+val jdoe = Res( "jdoe" ) a Person state(
+  Name -> Anon(
+    Given -> "John",
+    Family -> "Doe"
+  ),
+  Birthday -> "1977-07-27",
+  Height -> 167,
+  IsMale -> true,
+  Likes -> Swimming,
+  Likes -> Science
+)
+}}}
+
+Equivalent description of this graph in [http://www.w3.org/2007/02/turtle/primer/ Turtle] is:
+{{{
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<example:jdoe>
+  rdf:type <person:Person>;
+  <person:Name> [
+    <person:Given> "John";
+    <person:Family> "Doe"
+  ];
+  <person:Birthday> "1977-07-27";
+  <person:Height> "167"^^xsd:int;
+  <person:IsMale> "true"^^xsd:boolean;
+  <person:Likes> <person:Swimming>, <person:Science>.
+}}}
