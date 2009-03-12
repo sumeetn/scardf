@@ -18,17 +18,18 @@ val jdoe = Res( "jdoe" ) a Person state(
 
 Equivalent description of this graph in [http://www.w3.org/2007/02/turtle/primer/ Turtle] is:
 {{{
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix :    <person:>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
 <example:jdoe>
-  rdf:type <person:Person>;
-  <person:Name> [
-    <person:Given> "John";
-    <person:Family> "Doe"
+  rdf:type :Person;
+  :Name [
+    :Given "John";
+    :Family "Doe"
   ];
-  <person:Birthday> "1977-07-27";
-  <person:Height> "167"^^xsd:int;
-  <person:IsMale> "true"^^xsd:boolean;
-  <person:Likes> <person:Swimming>, <person:Science>.
+  :Birthday "1977-07-27";
+  :Height "167"^^xsd:int;
+  :IsMale "true"^^xsd:boolean;
+  :Likes :Swimming, :Science.
 }}}
