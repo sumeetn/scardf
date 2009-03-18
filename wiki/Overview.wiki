@@ -1,4 +1,5 @@
 #summary Overview of DSL features of Scardf
+#labels Featured
 
 Basic use cases of the API are:
  * Defining RDF *vocabularies*
