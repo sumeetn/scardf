@@ -10,7 +10,7 @@ Another way is with a slash operator, like in XPath. You can connect these opera
 jdoe/Name/Given
 }}}
 
-This actually gives you a sequence of RDF node objects, which may be empty, or a single node, or multiple nodes. To convert a node list to a string, you use the same slash operator, but now with a converter:
+This actually gives you a bag of RDF node objects, which may be empty, or a single node, or multiple nodes. To convert a node list to a string, you use the same slash operator, but now with a converter:
 {{{
 jdoe/Name/Given/asString == "John"
 }}}
@@ -33,7 +33,14 @@ jdoe/Height/asInt == 167
 jdoe/Birthday/asLocalDate == new LocalDate( 1977, 7, 27 )
 }}}
 
-Boolean expressions in Scardf have different, natural forms. Following expressions all return `true`:
+Single-node convertors work only on single-item bags, and throw exceptions in any other case. But you can construct converters that return options or default values from any single-node converter:
+
+{{{
+jdoe/Spouse/asRes.option == None
+jdoe/Weight/asInt.default( 100 ) == 100
+}}}
+
+Boolean expressions in Scardf can be in different forms, to appear as natural as possible. Following expressions all return `true`:
 {{{
 jdoe/IsMale?
 jdoe has Height -> 167
