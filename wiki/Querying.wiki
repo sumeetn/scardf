@@ -1,18 +1,20 @@
 #summary API for querying RDF graphs with Sparql
 
 
+*Note*: Check out the data for the examples at [ExampleData] page.
+
 == Select query ==
 
 SELECT allows ORDER BY, LIMIT and OFFSET clauses to be added.
 
 {{{
 val person, height = new QVar
-val selectPersonsByHeight = (
-  Sparql select( person, height ) 
+val selectPersonsByHeight = ( Sparql 
+  select( person, height ) 
     where( (person, RDF.Type, Person), (person, Height, height) )
     orderBy( asc( height ) )
     limit 2 offset 1
-  )
+)
 }}}
 
 This will create a SPARQL query like this one:
@@ -35,14 +37,3 @@ You can test the solutions of the query as a list of maps:
 )
 }}}
 
-
-
-|| *Scardf expression* || *description* ||
-|| {{{select}}} _variables_ {{{where}}} _conditions_ || ||
-|| <code>selectRes _var_ where _conditions_</code> || ||
-|| *selectAll* var *where* conditions *from* model || || 
-|| extractRes _res_ where _conditions_ from _model_ || || 
-|| extractResList res where || || 
-|| describe _var_ where _conditions_  || || 
-|| descriptionOf res || subgraph of res || 
-|| construct triplets where || || 
