@@ -1,7 +1,7 @@
 #summary Constructing an RDF graph using Scardf
 
 {{{
-implicit val model = new RModel withPrefix "example:"
+implicit val model = new RModel withPrefix "http://family.eg#"
 import PeopleVocabulary._
 val jdoe = Res( "jdoe" ) a Person state(
   Name -> Anon(
@@ -18,9 +18,10 @@ val jdoe = Res( "jdoe" ) a Person state(
 
 Equivalent description of this graph in [http://www.w3.org/2007/02/turtle/primer/ Turtle] is:
 {{{
-@prefix :    <person:>.
+@prefix :       <person:>.
+@prefix family: <http://family.eg#>
 
-<example:jdoe>
+family:jdoe
   a :Person;
   :Name [
     :Given "John";
@@ -31,6 +32,7 @@ Equivalent description of this graph in [http://www.w3.org/2007/02/turtle/primer
   :IsMale true;
   :Likes :Swimming,
          :Science;
-  :Children ( <example:anna> <example:bob> ).
+  :Children ( family:anna family:bob ).
 }}}
 
+A more deliberate example can be found at the [ExampleData] page.
