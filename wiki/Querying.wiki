@@ -1,11 +1,10 @@
 #summary API for querying RDF graphs with Sparql
 
-
 *Note*: Check out the data for the examples at [ExampleData] page.
 
 == Select query ==
 
-SELECT allows ORDER BY, LIMIT and OFFSET clauses to be added.
+SELECT allows ORDER BY, LIMIT and OFFSET modifiers to be added.
 
 {{{
 val person, height = new QVar
@@ -13,7 +12,8 @@ val selectPersonsByHeight = ( Sparql
   select( person, height ) 
     where( (person, RDF.Type, Person), (person, Height, height) )
     orderBy( asc( height ) )
-    limit 2 offset 1
+    limit 2
+    offset 1
 )
 }}}
 
@@ -37,3 +37,17 @@ You can test the solutions of the query as a list of maps:
 )
 }}}
 
+== Query modifiers ==
+
+Enclose variable list in `distinct` or `reduced` to include these modifiers into the query:
+
+{{{
+val person, hobby = new QVar
+val q = Sparql select distinct( hobby ) where( (person, Likes, hobby) )
+}}}
+
+Object `q` will construct a SPARQL query equivalent to this one:
+
+{{{
+SELECT DISTINCT ?v2 WHERE { ?v1 <person:Likes> ?v2. }
+}}}
