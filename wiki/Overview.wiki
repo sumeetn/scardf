@@ -13,23 +13,19 @@ You can define values in an `object` to define your vocabulary and the basic ont
 {{{
 object PeopleVocabulary extends Vocabulary( "http://person.eg#" ) {
   val Person = pRes( "Person" )
-  val Name = pProp( "Name" )
-  val Given = pProp( "Given" )
-  val Family = pProp( "Family" )
-  val Birthday = pProp( "Birthday" ) withRange XSD.date
-  val IsMale = pProp( "IsMale" ) withRange XSD.boolean
-  val Height = pProp( "Height" ) withRange XSD.int
   val Hobby = pRes( "Hobby" )
-  val Likes = pProp( "Likes" ) withRange Hobby
   val Swimming = pRes( "Swimming" ) a Hobby
   val Science = pRes( "Science" ) a Hobby
-  val Spouse = pProp( "Spouse" ) withRange Person
+  val Name = pProp( "Name" )
+  val IsMale = pProp( "IsMale" ) withRange XSD.boolean
+  val Height = pProp( "Height" ) withRange XSD.int
+  val Likes = pProp( "Likes" ) withRange Hobby
 }
 }}}
 
 == [Building] a graph ==
 
-A graph (model) is constructed as nested expressions
+A graph (model) is constructed using nested expressions:
 {{{
 import PeopleVocabulary._
 implicit val model = new Model withPrefix "http://family.eg#"
@@ -52,7 +48,7 @@ A graph can be traversed with a slash operator forming an XPath-like expressions
 jdoe/Name/Given
 }}}
 
-These yield a sequence of RDF node objects. To convert a node list to a string, you use the same slash operator, but now with a converter:
+These yield a collection of RDF node objects. To convert a node list to a string, you use the same slash operator, but now with a converter:
 {{{
 jdoe/Name/Given/asString == "John"
 }}}
