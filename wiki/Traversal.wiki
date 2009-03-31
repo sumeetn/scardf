@@ -15,6 +15,13 @@ This actually gives you a bag of RDF node objects, which may be empty, or a sing
 jdoe/Name/Given/asString == "John"
 }}}
 
+There are other converters for other types of literals:
+{{{
+jdoe/IsMale/asBoolean == true
+jdoe/Height/asInt == 167
+jdoe/Birthday/asLocalDate == new LocalDate( 1977, 7, 27 )
+}}}
+
 Single-node convertors work only on single-item bags, those that contain exactly one node (in this case a literal convertible to string), and throw exceptions in any other case. But you can construct converters that return options or default values from any single-node converter:
 {{{
 jdoe/Spouse/asRes.option == None
@@ -23,20 +30,13 @@ jdoe/Weight/asInt.default( 100 ) == 100
 
 If you expect results of different cardinalities, you can manipulate a slash-operator result as a collection of RDF nodes. 
 {{{
-( jdoe/Spouse ).isEmpty
+( anna/Spouse ).isEmpty
 for ( r <- jdoe/Likes ) println( r )
 }}}
 
 There are also converter modifiers that return collections of specific Scala objects from contained nodes. Adding a `.set` modifier returns a set of nodes instead of a single node:
 {{{
 jdoe/Likes/asRes.set == Set( Swimming, Science )
-}}}
-
-There are other converters for other types of literals:
-{{{
-jdoe/IsMale/asBoolean == true
-jdoe/Height/asInt == 167
-jdoe/Birthday/asLocalDate == new LocalDate( 1977, 7, 27 )
 }}}
 
 Boolean expressions in Scardf can have in different forms, to appear as natural as possible. Following expressions all return `true`:
@@ -48,7 +48,7 @@ jdoe( Likes -> Science )?
 
 If the slash operator returns an empty node list at any point, the whole expression will yield an empty bag - no exception is thrown:
 {{{
-( jdoe/Spouse/Name/Family ).isEmpty
+( anna/Spouse/Name/Family ).isEmpty
 }}}
 
 Another type you can use with a slash operator is a language extractor, useful for multilingual literals:

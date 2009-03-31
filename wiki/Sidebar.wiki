@@ -1,6 +1,7 @@
 #summary To be used as a sidebar for every wiki page
 
  * [Overview Overview of API features]
+ * [Vocabulary Constructing a vocabulary] 
  * [Building Building a graph]
    * [ExampleData Example graph]
  * [Traversal Traversing graphs]

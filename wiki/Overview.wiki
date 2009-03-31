@@ -7,7 +7,7 @@ Basic use cases of the API are:
  * *Traversing* RDF graphs
  * *Querying* RDF graphs
 
-== Defining a vocabulary ==
+== Defining a [Vocabulary vocabulary] ==
 
 You can define values in an `object` to define your vocabulary and the basic ontology:
 {{{
@@ -17,6 +17,8 @@ object PeopleVocabulary extends Vocabulary( "http://person.eg#" ) {
   val Swimming = pRes( "Swimming" ) a Hobby
   val Science = pRes( "Science" ) a Hobby
   val Name = pProp( "Name" )
+  val Given = pProp( "Given" )
+  val Family = pProp( "Family" )
   val IsMale = pProp( "IsMale" ) withRange XSD.boolean
   val Height = pProp( "Height" ) withRange XSD.int
   val Likes = pProp( "Likes" ) withRange Hobby
@@ -34,9 +36,8 @@ val jdoe = Res( "jdoe" ) a Person state(
     Given -> "John",
     Family -> "Doe"
   ),
-  Birthday -> "1977-07-27",
-  Height -> 167,
   IsMale -> true,
+  Height -> 167,
   Likes -> All( Swimming, Science )
 )
 }}}
@@ -53,17 +54,17 @@ These yield a collection of RDF node objects. To convert a node list to a string
 jdoe/Name/Given/asString == "John"
 }}}
 
-
 == [Querying] a graph ==
 
 {{{
 val x = new QVar
-Sparql selectRes x where( (x, Height, 167) ) from model
+val query = Sparql select x where( (x, Height, 167) )
+val results = query from model
 }}}
 
-This query expression forms a Sparql query string:
+The query object forms a Sparql query string:
 {{{
 SELECT ?v1 WHERE { ?v1 <person:Height> 167. }
 }}}
 
-This query executed on the example model yields an option `Some( jdoe )`
+Query executed on the example model yields a single result with resource `http://family.eg#jdoe`
