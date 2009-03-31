@@ -15,15 +15,21 @@ This actually gives you a bag of RDF node objects, which may be empty, or a sing
 jdoe/Name/Given/asString == "John"
 }}}
 
-Of course, this would only work if the node list contains a single node, a literal convertible to string. If you expect results of different cardinalities, you can manipulate a slash-operator result as a sequence of RDF nodes. 
+Single-node convertors work only on single-item bags, those that contain exactly one node (in this case a literal convertible to string), and throw exceptions in any other case. But you can construct converters that return options or default values from any single-node converter:
+{{{
+jdoe/Spouse/asRes.option == None
+jdoe/Weight/asInt.default( 100 ) == 100
+}}}
+
+If you expect results of different cardinalities, you can manipulate a slash-operator result as a collection of RDF nodes. 
 {{{
 ( jdoe/Spouse ).isEmpty
 for ( r <- jdoe/Likes ) println( r )
 }}}
 
-There are also converters that return collections of specific Scala objects from contained nodes:
+There are also converter modifiers that return collections of specific Scala objects from contained nodes:
 {{{
-jdoe/Likes/asResSet == Set( Swimming, Science )
+jdoe/Likes/asRes.set == Set( Swimming, Science )
 }}}
 
 There are other converters for other types of literals:
@@ -33,13 +39,6 @@ jdoe/Height/asInt == 167
 jdoe/Birthday/asLocalDate == new LocalDate( 1977, 7, 27 )
 }}}
 
-Single-node convertors work only on single-item bags, and throw exceptions in any other case. But you can construct converters that return options or default values from any single-node converter:
-
-{{{
-jdoe/Spouse/asRes.option == None
-jdoe/Weight/asInt.default( 100 ) == 100
-}}}
-
 Boolean expressions in Scardf can be in different forms, to appear as natural as possible. Following expressions all return `true`:
 {{{
 jdoe/IsMale?
@@ -47,7 +46,7 @@ jdoe has Height -> 167
 jdoe( Likes -> Science )?
 }}}
 
-If the slash operator returns an empty node list at any point, the whole expression will yield an empty list - no exception is thrown:
+If the slash operator returns an empty node list at any point, the whole expression will yield an empty bag - no exception is thrown:
 {{{
 ( jdoe/Spouse/Name/Family ).isEmpty
 }}}
