@@ -27,7 +27,7 @@ If you expect results of different cardinalities, you can manipulate a slash-ope
 for ( r <- jdoe/Likes ) println( r )
 }}}
 
-There are also converter modifiers that return collections of specific Scala objects from contained nodes:
+There are also converter modifiers that return collections of specific Scala objects from contained nodes. Adding a `.set` modifier returns a set of nodes instead of a single node:
 {{{
 jdoe/Likes/asRes.set == Set( Swimming, Science )
 }}}
@@ -39,7 +39,7 @@ jdoe/Height/asInt == 167
 jdoe/Birthday/asLocalDate == new LocalDate( 1977, 7, 27 )
 }}}
 
-Boolean expressions in Scardf can be in different forms, to appear as natural as possible. Following expressions all return `true`:
+Boolean expressions in Scardf can have in different forms, to appear as natural as possible. Following expressions all return `true`:
 {{{
 jdoe/IsMale?
 jdoe has Height -> 167
