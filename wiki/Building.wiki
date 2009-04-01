@@ -1,38 +1,49 @@
 #summary Constructing an RDF graph using Scardf
 
+
+Model is constructed as a Scala object in Scardf. If you give it a prefix, all resources will prepend this string in their URIs.
 {{{
-implicit val model = new RModel withPrefix "http://family.eg#"
-import PeopleVocabulary._
-val jdoe = Res( "jdoe" ) a Person state(
+new Model withPrefix "http://family.eg#"
+}}}
+
+Resources are created from the model, using alternative expressions like these:  
+{{{
+model.getRes( "jdoe" )
+Res( "jdoe" )( model )
+}}}
+
+You can avoid repeating the reference to the model with implicit values:
+{{{
+implicit val model = new Model withPrefix "http://family.eg#"
+val jdoe = Res( "jdoe" )
+}}}
+
+Adding statements to the model is easy, just call method `state` on a subject. Assigned objects 
+may be RDF nodes, but also some Scala objects, such as Strings, Ints, Booleans...
+{{{
+jdoe state Height -> 167
+}}}
+
+You can assign multiple properties in one `state` method, or even multiple values for the same property:
+{{{
+jdoe state( IsMale -> true, Likes -> Swimming, Likes -> Science )
+}}}
+
+Assigning multiple values can be shortened using a case class `All`:
+{{{
+jdoe state Likes -> All( Swimming, Science )
+}}}
+
+You can nest other RDF nodes with their own statements, including anonymous (blank) nodes:
+{{{
+jdoe state(
   Name -> Anon(
     Given -> "John",
     Family -> "Doe"
   ),
-  Birthday -> "1977-07-27",
-  Height -> 167,
-  IsMale -> true,
-  Likes -> All( Swimming, Science ),
-  Children -> RdfList( Res( "anna" ), Res( "bob" ) )
+  Spouse -> Res( "jane" ).state( Spouse -> jdoe )
 )
 }}}
 
-Equivalent description of this graph in [http://www.w3.org/2007/02/turtle/primer/ Turtle] is:
-{{{
-@prefix :       <person:>.
-@prefix family: <http://family.eg#>
+A more deliberate example of graph building can be found at the [ExampleData] page.
 
-family:jdoe
-  a :Person;
-  :Name [
-    :Given "John";
-    :Family "Doe"
-  ];
-  :Birthday "1977-07-27";
-  :Height 167;
-  :IsMale true;
-  :Likes :Swimming,
-         :Science;
-  :Children ( family:anna family:bob ).
-}}}
-
-A more deliberate example can be found at the [ExampleData] page.

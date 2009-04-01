@@ -34,3 +34,45 @@ val jane = Res( "jane" ) a Person state(
 for ( p <- List( anna, bob, jane, jdoe ) )
   p/Name/asRes state Family -> "Doe"
 }}}
+
+Equivalent description of this graph in [http://www.w3.org/2007/02/turtle/primer/ Turtle] is:
+{{{
+@prefix :        <http://person.eg#> .
+@prefix family:  <http://family.eg#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+family:anna
+      rdf:type  :Person;
+      :Birthday "2004-04-14";
+      :Height   107;
+      :IsMale   false;
+      :Likes    :Swimming;
+      :Name     [ :Family "Doe"; :Given "Anna" ].
+
+family:bob
+      rdf:type  :Person;
+      :Birthday "2007-05-18";
+      :Height   87;
+      :IsMale   true;
+      :Name     [ :Family "Doe"; :Given "Bob" ].
+
+family:jdoe
+      rdf:type  :Person;
+      :Birthday "1977-07-27";
+      :Children ( family:anna family:bob );
+      :Height   167;
+      :IsMale   true;
+      :Likes    :Swimming, :Science;
+      :Name     [ :Family "Doe"; :Given "John" ];
+      :Spouse   family:jane.
+
+family:jane
+      rdf:type  :Person;
+      :Birthday "1976-06-26";
+      :Children ( family:anna family:bob );
+      :Height   150;
+      :IsMale   false;
+      :Likes    :Swimming;
+      :Name     [ :Family "Doe"; :Given "Jane" ];
+      :Spouse   family:jdoe.
+}}}
