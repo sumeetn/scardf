@@ -58,9 +58,11 @@ SELECT DISTINCT ?v2 WHERE { ?v1 <http://person.eg#Likes> ?v2. }
 == Special select expressions ==
 
 When you are selecting a single variable, you can use a predefined one called `X`. 
-This query variable is already expected in some special select expressions, that provide 
+This query variable is already expected in some special select expressions, 
+that provide a more direct access to objects in the solution(s).
 
-When you expect at most one solution to the query, use `selectX` method with a node converter:
+When you expect at most one solution to the query, use `selectX` method with a node converter.
+This will give you a appropriately typed `Option`:
 {{{
 Sparql selectX asRes where( (X, Likes, Science) ) from model == Some( jdoe )
 Sparql selectX asInt where( (jane, Height, X) ) from model == Some( 150 )
