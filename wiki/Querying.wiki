@@ -29,13 +29,15 @@ SELECT ?v1 ?v2
   OFFSET 1
 }}}
 
+Select queries get executed by calling method `.from( Model )`.
 You can test the solutions of the query as a list of maps:
 {{{
-(selectPersonsByHeight from data).solutions == List(
+(selectPersonsByHeight from model).solutions == List(
   Map( person -> anna, height -> Lit(107) ), 
   Map( person -> jane, height -> Lit(150) )
 )
 }}}
+
 
 == Query modifiers ==
 
@@ -51,3 +53,23 @@ Object `q` will construct a SPARQL query equivalent to this one:
 {{{
 SELECT DISTINCT ?v2 WHERE { ?v1 <http://person.eg#Likes> ?v2. }
 }}}
+
+
+== Special select expressions ==
+
+When you are selecting a single variable, you can use a predefined one called `X`. 
+This query variable is already expected in some special select expressions, that provide 
+
+When you expect at most one solution to the query, use `selectX` method with a node converter:
+{{{
+Sparql selectX asRes where( (X, Likes, Science) ) from model == Some( jdoe )
+Sparql selectX asInt where( (jane, Height, X) ) from model == Some( 150 )
+Sparql selectX asInt where( (jane, Weight, X) ) from model == None
+}}}
+
+You can use `selectAllX` for multiple-solutions queries. 
+The following example yields an iterator of Res objects:
+{{{
+Sparql selectAllX asRes where( (X, Likes, Swimming) ) from model
+}}}
+
