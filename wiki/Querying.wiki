@@ -75,3 +75,11 @@ The following example yields an iterator of Res objects:
 Sparql selectAllX asRes where( (X, Likes, Swimming) ) from model
 }}}
 
+
+== ASK queries ==
+
+These queries return boolean values:
+{{{
+Sparql ask( (jdoe, Likes, Science) ) in model must_== true
+Sparql ask( (X, IsMale, false), (X, Likes, Science) ) in model must_== false
+}}}
