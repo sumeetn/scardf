@@ -10,7 +10,7 @@ Another way is with a slash operator, like in XPath. You can connect these opera
 jdoe/Name/Given
 }}}
 
-This actually gives you a bag of RDF node objects, which may be empty, or a single node, or multiple nodes. To convert a node list to a string, you use the same slash operator, but now with a converter:
+This actually gives you a bag of RDF node objects, which may be empty, or a single node, or multiple nodes. To convert a node bag to a string, you use the same slash operator, but now with a converter object:
 {{{
 jdoe/Name/Given/asString == "John"
 }}}

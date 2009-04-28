@@ -18,20 +18,25 @@ implicit val model = new Model withPrefix "http://family.eg#"
 val jdoe = Res( "jdoe" )
 }}}
 
-Adding statements to the model is easy, just call method `state` on a subject. Assigned objects 
-may be RDF nodes, but also some Scala objects, such as Strings, Ints, Booleans...
+Adding statements to the model is easy:
+{{{
+Height( jdoe ) = 167
+}}}
+
+Another way is calling method `state` on the subject.
+Assigned objects may be RDF nodes, but also some Scala objects: Strings, Ints, Booleans...
 {{{
 jdoe state Height -> 167
 }}}
 
-You can assign multiple properties in one `state` method, or even multiple values for the same property:
+You can assign multiple properties in one `state` method, and also multiple values for the same property:
 {{{
 jdoe state( IsMale -> true, Likes -> Swimming, Likes -> Science )
 }}}
 
-Assigning multiple values can be shortened using a case class `All`:
+Assigning multiple values can be shortened using tuples:
 {{{
-jdoe state Likes -> All( Swimming, Science )
+Likes( jdoe ) = ( Swimming, Science )
 }}}
 
 You can nest other RDF nodes with their own statements, including anonymous (blank) nodes:

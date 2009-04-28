@@ -20,7 +20,7 @@ val bob = Res( "bob" ) a Person state(
 val jdoe = Res( "jdoe" ) a Person state(
   Name -> Anon( Given -> "John" ),
   aMale, Birthday -> "1977-07-27", Height -> 167,
-  Likes -> All( Swimming, Science ),
+  Likes -> ( Swimming, Science ),
   Children -> RdfList( anna, bob ), Spouse -> Res( "jane" )
 )
 val jane = Res( "jane" ) a Person state(
@@ -30,9 +30,8 @@ val jane = Res( "jane" ) a Person state(
   Children -> RdfList( anna, bob ), Spouse -> jdoe
 )
 
-// set last name "Doe" to all
-for ( p <- List( anna, bob, jane, jdoe ) )
-  p/Name/asRes state Family -> "Doe"
+// set last name "Doe" to each family member
+List( anna, bob, jane, jdoe ) foreach { (Name-Family)( _ ) = "Doe" }
 }}}
 
 Equivalent description of this graph in [http://www.w3.org/2007/02/turtle/primer/ Turtle] is:
