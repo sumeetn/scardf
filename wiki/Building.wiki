@@ -8,45 +8,45 @@ new Model withPrefix "http://family.eg#"
 
 Resources are created from the model, using alternative expressions like these:  
 {{{
-model.getRes( "jdoe" )
-Res( "jdoe" )( model )
+model.getRes( "john" )
+Res( "john" )( model )
 }}}
 
 You can avoid repeating the reference to the model with implicit values:
 {{{
 implicit val model = new Model withPrefix "http://family.eg#"
-val jdoe = Res( "jdoe" )
+val john = Res( "john" )
 }}}
 
 Adding statements to the model is easy:
 {{{
-Height( jdoe ) = 167
+Height( john ) = 167
 }}}
 
 Another way is calling method `state` on the subject.
 Assigned objects may be RDF nodes, but also some Scala objects: Strings, Ints, Booleans...
 {{{
-jdoe state Height -> 167
+john state Height -> 167
 }}}
 
 You can assign multiple properties in one `state` method, and also multiple values for the same property:
 {{{
-jdoe state( IsMale -> true, Likes -> Swimming, Likes -> Science )
+john state( IsMale -> true, Likes -> Swimming, Likes -> Science )
 }}}
 
 Assigning multiple values can be shortened using tuples:
 {{{
-Likes( jdoe ) = ( Swimming, Science )
+Likes( john ) = ( Swimming, Science )
 }}}
 
 You can nest other RDF nodes with their own statements, including anonymous (blank) nodes:
 {{{
-jdoe state(
+john state(
   Name -> Anon(
     Given -> "John",
     Family -> "Doe"
   ),
-  Spouse -> Res( "jane" ).state( Spouse -> jdoe )
+  Spouse -> Res( "jane" ).state( Spouse -> john )
 )
 }}}
 

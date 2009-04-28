@@ -17,7 +17,7 @@ val bob = Res( "bob" ) a Person state(
   Name -> Anon( Given -> "Bob" ),
   aMale, Birthday -> "2007-05-18", Height -> 87
 )
-val jdoe = Res( "jdoe" ) a Person state(
+val john = Res( "john" ) a Person state(
   Name -> Anon( Given -> "John" ),
   aMale, Birthday -> "1977-07-27", Height -> 167,
   Likes -> ( Swimming, Science ),
@@ -27,11 +27,11 @@ val jane = Res( "jane" ) a Person state(
   Name -> Anon( Given -> "Jane" ),
   aFemale, Birthday -> "1976-06-26", Height -> 150,
   Likes -> Swimming,
-  Children -> RdfList( anna, bob ), Spouse -> jdoe
+  Children -> RdfList( anna, bob ), Spouse -> john
 )
 
 // set last name "Doe" to each family member
-List( anna, bob, jane, jdoe ) foreach { (Name-Family)( _ ) = "Doe" }
+List( anna, bob, jane, john ) foreach { (Name-Family)( _ ) = "Doe" }
 }}}
 
 Equivalent description of this graph in [http://www.w3.org/2007/02/turtle/primer/ Turtle] is:
@@ -55,7 +55,7 @@ family:bob
       :IsMale   true;
       :Name     [ :Family "Doe"; :Given "Bob" ].
 
-family:jdoe
+family:john
       rdf:type  :Person;
       :Birthday "1977-07-27";
       :Children ( family:anna family:bob );
@@ -73,5 +73,5 @@ family:jane
       :IsMale   false;
       :Likes    :Swimming;
       :Name     [ :Family "Doe"; :Given "Jane" ];
-      :Spouse   family:jdoe.
+      :Spouse   family:john.
 }}}
