@@ -64,7 +64,7 @@ that provide a more direct access to objects in the solution(s).
 When you expect at most one solution to the query, use `selectX` method with a node converter.
 This will give you a appropriately typed `Option`:
 {{{
-Sparql selectX asRes where( (X, Likes, Science) ) from model == Some( jdoe )
+Sparql selectX asRes where( (X, Likes, Science) ) from model == Some( john )
 Sparql selectX asInt where( (jane, Height, X) ) from model == Some( 150 )
 Sparql selectX asInt where( (jane, Weight, X) ) from model == None
 }}}
@@ -80,6 +80,6 @@ Sparql selectAllX asRes where( (X, Likes, Swimming) ) from model
 
 These queries return boolean values:
 {{{
-Sparql ask( (jdoe, Likes, Science) ) in model must_== true
-Sparql ask( (X, IsMale, false), (X, Likes, Science) ) in model must_== false
+Sparql ask( (john, Likes, Science) ) in model == true
+Sparql ask( (X, IsMale, false), (X, Likes, Science) ) in model == false
 }}}
