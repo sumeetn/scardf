@@ -16,29 +16,28 @@ object PeopleVocabulary extends Vocabulary( "http://person.eg#" ) {
   val Hobby = pRes( "Hobby" )
   val Swimming = pRes( "Swimming" ) a Hobby
   val Science = pRes( "Science" ) a Hobby
-  val Name = pProp( "Name" )
-  val Given = pProp( "Given" )
-  val Family = pProp( "Family" )
+  val Likes = pProp( "Likes" ) withRange Hobby
   val IsMale = pProp( "IsMale" ) withRange XSD.boolean
   val Height = pProp( "Height" ) withRange XSD.int
-  val Likes = pProp( "Likes" ) withRange Hobby
 }
 }}}
 
 == [Building] a graph ==
 
-A graph (model) is constructed using nested expressions:
+You can add statements to the model using 
 {{{
-import PeopleVocabulary._
+Height( john ) = 167
+john state( IsMale -> true, Likes -> (Swimming, Science) )
+}}}
+
+An RDF graph is constructed using nested expressions:
+{{{
 implicit val model = new Model withPrefix "http://family.eg#"
-val jdoe = Res( "jdoe" ) a Person state(
-  Name -> Anon(
-    Given -> "John",
-    Family -> "Doe"
-  ),
+val john = Res( "john" ) a Person state(
+  Name -> Anon( Given -> "John", Family -> "Doe" ),
   IsMale -> true,
   Height -> 167,
-  Likes -> All( Swimming, Science )
+  Likes -> ( Swimming, Science )
 )
 }}}
 
@@ -46,12 +45,17 @@ val jdoe = Res( "jdoe" ) a Person state(
 
 A graph can be traversed with a slash operator forming an XPath-like expressions:
 {{{
-jdoe/Name/Given
+john/Name/Given
 }}}
 
-These yield a collection of RDF node objects. To convert a node list to a string, you use the same slash operator, but now with a converter:
+These yield a bag of RDF node objects. If you expect a single string, you append the `asString` converter object:
 {{{
-jdoe/Name/Given/asString == "John"
+john/Name/Given/asString == "John"
+}}}
+
+Converters also have modifiers which yield collections of Scala objects:
+{{{
+john/Likes/asRes.set == Set( Swimming, Science )
 }}}
 
 == [Querying] a graph ==
@@ -67,4 +71,4 @@ The query object forms a Sparql query string:
 SELECT ?v1 WHERE { ?v1 <person:Height> 167. }
 }}}
 
-Query executed on the example model yields a single result with resource `http://family.eg#jdoe`
+Query executed on the example model yields a single result with resource `http://family.eg#john`
