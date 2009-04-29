@@ -7,11 +7,10 @@
 SELECT allows ORDER BY, LIMIT and OFFSET modifiers to be added.
 
 {{{
-val person, height = new QVar
 val selectPersonsByHeight = ( Sparql 
-  select( person, height ) 
-    where( (person, RDF.Type, Person), (person, Height, height) )
-    orderBy( asc( height ) )
+  select( 'person, 'height ) 
+    where( ('person, RDF.Type, Person), ('person, Height, 'height) )
+    orderBy( asc( 'height ) )
     limit 2
     offset 1
 )
@@ -19,12 +18,12 @@ val selectPersonsByHeight = ( Sparql
 
 This will create a SPARQL query like this one:
 {{{
-SELECT ?v1 ?v2 
+SELECT ?person ?height 
   WHERE { 
-    ?v1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://person.eg#Person>.
-    ?v1 <http://person.eg#Height> ?v2. 
+    ?person rdf:type :Person.
+    ?person :Height ?height. 
   }
-  ORDER BY ASC( ?v2 )
+  ORDER BY ASC( ?height )
   LIMIT 2
   OFFSET 1
 }}}
@@ -44,14 +43,13 @@ You can test the solutions of the query as a list of maps:
 Enclose variable list in `distinct` or `reduced` to include these modifiers into the query:
 
 {{{
-val person, hobby = new QVar
-val q = Sparql select distinct( hobby ) where( (person, Likes, hobby) )
+val q = Sparql select distinct( 'hobby ) where( ('person, Likes, 'hobby) )
 }}}
 
 Object `q` will construct a SPARQL query equivalent to this one:
 
 {{{
-SELECT DISTINCT ?v2 WHERE { ?v1 <http://person.eg#Likes> ?v2. }
+SELECT DISTINCT ?hobby WHERE { ?person :Likes ?hobby. }
 }}}
 
 

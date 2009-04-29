@@ -61,14 +61,13 @@ john/Likes/asRes.set == Set( Swimming, Science )
 == [Querying] a graph ==
 
 {{{
-val x = new QVar
-val query = Sparql select x where( (x, Height, 167) )
+val query = Sparql select 'person where( ('person, Height, 167) )
 val results = query from model
 }}}
 
 The query object forms a Sparql query string:
 {{{
-SELECT ?v1 WHERE { ?v1 <person:Height> 167. }
+SELECT ?person WHERE { ?person :Height 167. }
 }}}
 
 Query executed on the example model yields a single result with resource `http://family.eg#john`
