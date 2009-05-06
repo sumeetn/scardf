@@ -2,10 +2,10 @@
 #labels Featured
 
 Basic use cases of the API are:
- * Defining RDF *vocabularies*
- * *Building* RDF graphs
- * *Traversing* RDF graphs
- * *Querying* RDF graphs
+ * [Vocabulary Defining RDF *vocabularies*]
+ * [Building *Building* RDF graphs]
+ * [Traversal *Traversing* RDF graphs]
+ * [Querying *Querying* RDF graphs]
 
 == Defining a [Vocabulary vocabulary] ==
 
@@ -24,7 +24,7 @@ object PeopleVocabulary extends Vocabulary( "http://person.eg#" ) {
 
 == [Building] a graph ==
 
-You can add statements to the model using 
+You can add statements to the model using a Scala assignment, or a method named `state`:
 {{{
 Height( john ) = 167
 john state( IsMale -> true, Likes -> (Swimming, Science) )
@@ -61,13 +61,13 @@ john/Likes/asRes.set == Set( Swimming, Science )
 == [Querying] a graph ==
 
 {{{
-val query = Sparql select 'person where( ('person, Height, 167) )
-val results = query from model
+val selectHeighest = Sparql select 'person where( ('person, Height, 'h) ) sortBy desc( 'h ) limit 1
+val results = selectHeighest from model
 }}}
 
-The query object forms a Sparql query string:
+The `selectHeighest` object forms a Sparql query:
 {{{
-SELECT ?person WHERE { ?person :Height 167. }
+SELECT ?person WHERE { ?person :Height ?h. } ORDER BY DESC( ?h ) LIMIT 1
 }}}
 
 Query executed on the example model yields a single result with resource `http://family.eg#john`
