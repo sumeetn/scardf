@@ -31,7 +31,7 @@ val jane = Res( "jane" ) a Person state(
 )
 
 // set last name "Doe" to each family member
-List( anna, bob, jane, john ) foreach { (Name-Family)( _ ) = "Doe" }
+List( anna, bob, jane, john ) foreach { (Name~Family)( _ ) = "Doe" }
 }}}
 
 Equivalent description of this graph in [http://www.w3.org/2007/02/turtle/primer/ Turtle] is:
