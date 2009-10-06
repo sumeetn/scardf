@@ -2,10 +2,10 @@
 #labels Featured
 
 Basic use cases of the API are:
- * [Vocabulary Defining RDF *vocabularies*]
- * [Building *Building* RDF graphs]
- * [Traversal *Traversing* RDF graphs]
- * [Querying *Querying* RDF graphs]
+ * [Vocabulary Defining RDF vocabularies]
+ * [Building Building RDF graphs]
+ * [Traversal Traversing RDF graphs]
+ * [Querying Querying RDF graphs]
 
 == Defining a [Vocabulary vocabulary] ==
 
