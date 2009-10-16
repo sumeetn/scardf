@@ -4,7 +4,7 @@
 implicit val data = new Model() withPrefix "http://family.eg#"
 import PeopleVocabulary._
 
-// some shortcuts for describing the sex
+// some shortcuts for describing gender
 val aMale = IsMale -> true
 val aFemale = IsMale -> false
 
