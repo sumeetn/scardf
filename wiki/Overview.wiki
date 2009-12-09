@@ -61,7 +61,7 @@ john/Likes/asRes.set == Set( Swimming, Science )
 == [Querying] a graph ==
 
 {{{
-val selectHeighest = Sparql select 'person where( ('person, Height, 'h) ) sortBy desc( 'h ) limit 1
+val selectHeighest = Sparql select 'person where( ('person, Height, 'h) ) orderBy desc( 'h ) limit 1
 val results = selectHeighest from model
 }}}
 
