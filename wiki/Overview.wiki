@@ -67,7 +67,7 @@ val results = selectHeighest from model
 
 The `selectHeighest` object forms a Sparql query:
 {{{
-SELECT ?person WHERE { ?person :Height ?h. } ORDER BY DESC( ?h ) LIMIT 1
+SELECT ?person WHERE { ?person :Height ?h . } ORDER BY DESC( ?h ) LIMIT 1
 }}}
 
 Query executed on the example model yields a single result with resource `http://family.eg#john`

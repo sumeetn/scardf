@@ -20,8 +20,8 @@ This will create a SPARQL query like this one:
 {{{
 SELECT ?person ?height 
   WHERE { 
-    ?person rdf:type :Person.
-    ?person :Height ?height. 
+    ?person rdf:type :Person .
+    ?person :Height ?height . 
   }
   ORDER BY ASC( ?height )
   LIMIT 2
@@ -49,7 +49,7 @@ val q = Sparql select distinct( 'hobby ) where( ('person, Likes, 'hobby) )
 Object `q` will construct a SPARQL query equivalent to this one:
 
 {{{
-SELECT DISTINCT ?hobby WHERE { ?person :Likes ?hobby. }
+SELECT DISTINCT ?hobby WHERE { ?person :Likes ?hobby . }
 }}}
 
 

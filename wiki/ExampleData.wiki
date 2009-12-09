@@ -46,14 +46,14 @@ family:anna
       :Height   107;
       :IsMale   false;
       :Likes    :Swimming;
-      :Name     [ :Family "Doe"; :Given "Anna" ].
+      :Name     [ :Family "Doe"; :Given "Anna" ] .
 
 family:bob
       rdf:type  :Person;
       :Birthday "2007-05-18";
       :Height   87;
       :IsMale   true;
-      :Name     [ :Family "Doe"; :Given "Bob" ].
+      :Name     [ :Family "Doe"; :Given "Bob" ] .
 
 family:john
       rdf:type  :Person;
@@ -63,7 +63,7 @@ family:john
       :IsMale   true;
       :Likes    :Swimming, :Science;
       :Name     [ :Family "Doe"; :Given "John" ];
-      :Spouse   family:jane.
+      :Spouse   family:jane .
 
 family:jane
       rdf:type  :Person;
@@ -73,5 +73,5 @@ family:jane
       :IsMale   false;
       :Likes    :Swimming;
       :Name     [ :Family "Doe"; :Given "Jane" ];
-      :Spouse   family:john.
+      :Spouse   family:john .
 }}}
