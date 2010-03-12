@@ -16,3 +16,7 @@ http://yuml.me/diagram/scruffy%3Bdir%3ALR%3B/class/%5BTriple%5D-object%3E%5BNode
 http://yuml.me/diagram/scruffy%3B/class/%5BNodeFromGraph%7Cnode%5D%5E-.-%5BGraphNode%5D%2C%20%5BNodeFromGraph%5D%5E-.-%5BLiteral%7Cnode%20%3D%20this%5D%2C%20%5BGraphNode%7Cgraph%5D-graph%3E%5BGraph%5D%2C%20%5BGraphNode%5D-node%3E%5BSubjectNode%5D.png
 
 ==Node bags==
+
+http://yuml.me/diagram/scruffy/class/%5BNodeBag%5D-%3E%5BGraph%5D%2C%20%5BNodeBag%5D-*%3E%5BNode%5D
+
+==Node and bag converters==
