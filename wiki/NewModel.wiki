@@ -5,4 +5,4 @@ http://yuml.me/diagram/scruffy%3B/class/%5BNode%5D%5E-%5BSubjectNode%5D%2C%20%5B
 
 http://yuml.me/diagram/scruffy%3B/class/%5BNodeFromGraph%7Cnode%5D%5E-.-%5BGraphNode%5D%2C%20%5BNodeFromGraph%5D%5E-.-%5BLiteral%7Cnode%20%3D%20this%5D%2C%20%5BGraphNode%7Cgraph%5D-graph%3E%5BGraph%5D%2C%20%5BGraphNode%5D-node%3E%5BSubjectNode%5D.png
 
-http://yuml.me/diagram/scruffy%3B/class/%5BTriple%5D-subject%3E%5BSubjectNode%5D%2C%20%5BTriple%5D-predicate%3E%5BUriRef%5D%2C%20%5BTriple%5D-object%3E%5BNode%5D%2C%20%5BGraph%5D%3C%3Eset-%5BTriple%5D.png
+http://yuml.me/diagram/scruffy%3B/class/%5BTriple%5D-object%3E%5BNode%5D%2C%20%5BTriple%5D-predicate%3E%5BUriRef%5D%2C%20%5BTriple%5D-subject%3E%5BSubjectNode%5D%2C%20%5BGraph%5D%3C%3Eset-%5BTriple%5D.png
