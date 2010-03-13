@@ -1,13 +1,13 @@
 #labels Deprecated
 ==Nodes==
 
-The hierarchy follows the RDF model. Nodes can be either literals or subject nodes. Literals are either plain (with optional language tag) or typed. Subject nodes are either blank or URI references.
+The hierarchy follows the RDF model. Nodes can be either literals or subject nodes. Literals are either plain (with optional language tag) or typed. Subject nodes are either blank nodes or URI references.
 
 http://yuml.me/diagram/scruffy%3B/class/%5BNode%5D%5E-%5BSubjectNode%5D%2C%20%5BSubjectNode%5D%5E-%5BUriRef|uri%5D%2C%20%5BSubjectNode%5D%5E-%5BBlank|id%5D%2C%20%5BNode%5D%5E-%5BLiteral%5D%2C%20%5BLiteral|lexicalForm%5D%5E-%5BPlainLiteral|langTagOpt%5D%2C%20%5BLiteral%5D%5E-%5BTypedLiteral|datatypeUriRef%5D%2C%20%5BPlainLiteral%5D-.-%3E%5BLangTag|code%5D.png
 
 ==Triples and graphs==
 
-Graph is a set of triples (subject, predicate, object). Subjects are subject nodes, predicates are URI references, and objects can be any nodes.
+Graph is a set of triples (subject, predicate, object). Subjects are instances of SubjectNode, predicates are URI references, and objects can be any nodes.
 
 http://yuml.me/diagram/scruffy%3Bdir%3ALR%3B/class/%5BTriple%5D-object%3E%5BNode%5D%2C%20%5BTriple%5D-predicate%3E%5BUriRef%5D%2C%20%5BTriple%5D-subject%3E%5BSubjectNode%5D%2C%20%5BGraph%5D%3C%3Eset-%5BTriple%5D.png
 
@@ -17,6 +17,6 @@ http://yuml.me/diagram/scruffy%3B/class/%5BNodeFromGraph%7Cnode%5D%5E-.-%5BGraph
 
 ==Node bags==
 
-http://yuml.me/diagram/scruffy/class/%5BNodeBag%5D-%3E%5BGraph%5D%2C%20%5BNodeBag%5D-*%3E%5BNode%5D
+http://yuml.me/diagram/scruffy/class/[NodeBag]-%3E[Graph],%20[NodeBag]-*%3E[Node].png
 
 ==Node and bag converters==
