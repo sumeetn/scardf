@@ -1,5 +1,4 @@
 #labels Deprecated
-
 ==Design goals==
 
 The model closely matches concepts and terminology of the RDF specification.
@@ -7,8 +6,6 @@ The model closely matches concepts and terminology of the RDF specification.
 It is a standalone model and not a wrapper for an existing Java library. It can be expanded to include other libraries under its API.
 
 Basic constructs are all lightweight immutable objects, with some mutable companion classes for larger constructs such as Graphs.
-
-New API uses Scala 2.8 and its redesigned collections framework, named arguments etc.
 
 
 ==Nodes==
