@@ -1,5 +1,4 @@
 #labels Deprecated
-
 `GraphNode`s have a *slash operator*. You can connect these operations to form a *path expression*, like in XPath:
 {{{
 g/john/name/given
@@ -38,7 +37,6 @@ g/john/likes/asNode.set == Set( swimming, science )
 {{{
 g/john/isMale?
 g/john has height -> 167
-
 }}}
 
 If the slash operator returns an empty node list at any point, the whole expression will yield an empty bag - no exception is thrown:
@@ -46,15 +44,10 @@ If the slash operator returns an empty node list at any point, the whole express
 ( anna/Spouse/Name/Family ).isEmpty
 }}}
 
-Another type you can use with a slash operator is a *language extractor*, useful for multilingual literals:
-{{{
-john/Title/Lang.en
-}}}
-
 Special type of node bag converter is a *filter*. Place them in a path expression by using the factory object `where`:
 {{{
-val familyMembers = NodeBag( john, jane, anna, bob )
-familyMembers/where( _/IsMale? ) == NodeBag( john, bob )
-familyMembers/where( _/Spouse/IsMale? ) == NodeBag( jane )
-familyMembers/where( _/Likes contains Science ) == NodeBag( john )
+val familyMembers = g.bagOf( john, jane, anna, bob )
+familyMembers/where( _/isMale? ) == g.bagOf( john, bob )
+familyMembers/where( _/spouse/isMale? )/asNode.set == Set( jane )
+familyMembers/where( _/likes contains science ) == g.bagOf( john )}}}
 }}}
