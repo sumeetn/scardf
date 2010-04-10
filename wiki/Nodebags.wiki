@@ -1,0 +1,60 @@
+#labels Deprecated
+
+`GraphNode`s have a *slash operator*. You can connect these operations to form a *path expression*, like in XPath:
+{{{
+g/john/name/given
+}}}
+
+This actually gives you a *bag of RDF nodes in a graph*. This bag may be empty, or it may contain a single node or multiple nodes. To convert a node bag to a string, you use the same slash operator, but now with a *converter object*:
+{{{
+g/john/name/given/asString == "John"
+}}}
+
+There are other converters for other types of literals. They are contained in the `org.scardf.NodeConverter` object.
+{{{
+g/john/isMale/asBoolean == true
+g/john/height/asInt == 167
+g/john/birthday/asLocalDate == new LocalDate( 1977, 7, 27 )
+}}}
+
+Single-node convertors work only on single-item bags, those that contain exactly one node (in this case a literal convertible to string), and throw exceptions in any other case. But you can construct converters that return options or default values from any single-node converter:
+{{{
+g/anna/spouse/asNode.option == None
+g/anna/weight/asInt.default( 100 ) == 100
+}}}
+
+If you expect results of different cardinalities, you can manipulate a slash-operator result as a collection of RDF nodes. 
+{{{
+( g/anna/spouse ).isEmpty
+for ( r <- g/john/likes ) println( r )
+}}}
+
+There are also converter modifiers that return collections of specific Scala objects from contained nodes. Adding a `.set` modifier returns a set of nodes instead of a single node:
+{{{
+g/john/likes/asNode.set == Set( swimming, science )
+}}}
+
+*Boolean expressions* in Scardf can have in different forms, to appear as natural as possible. Following expressions all return `true`:
+{{{
+g/john/isMale?
+g/john has height -> 167
+
+}}}
+
+If the slash operator returns an empty node list at any point, the whole expression will yield an empty bag - no exception is thrown:
+{{{
+( anna/Spouse/Name/Family ).isEmpty
+}}}
+
+Another type you can use with a slash operator is a *language extractor*, useful for multilingual literals:
+{{{
+john/Title/Lang.en
+}}}
+
+Special type of node bag converter is a *filter*. Place them in a path expression by using the factory object `where`:
+{{{
+val familyMembers = NodeBag( john, jane, anna, bob )
+familyMembers/where( _/IsMale? ) == NodeBag( john, bob )
+familyMembers/where( _/Spouse/IsMale? ) == NodeBag( jane )
+familyMembers/where( _/Likes contains Science ) == NodeBag( john )
+}}}
