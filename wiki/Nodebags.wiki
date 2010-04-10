@@ -1,10 +1,15 @@
 #labels Deprecated
-`GraphNode`s have a *slash operator*. You can connect these operations to form a *path expression*, like in XPath:
+[GraphNode Graph nodes] are objects that pair up URI references or blank nodes with a specific graph. `john` in the context of graph `g` is written like this:
+{{{
+g/john
+}}}
+
+Graph nodes also have a *slash operator* that can take URI references as an argument. You can connect these operations to form a *path expression*, like in XPath:
 {{{
 g/john/name/given
 }}}
 
-This actually gives you a *bag of RDF nodes in a graph*. This bag may be empty, or it may contain a single node or multiple nodes. A special expression `g/-` yields a node bag containing all nodes present as subject in graph's triples.
+This actually gives you a *bag of RDF nodes* in a single graph. This bag may be empty, or it may contain a single node or multiple nodes. A special expression `g/-` yields a node bag containing all nodes present as subjects in `g`'s triples.
 
 ==Converters==
 
