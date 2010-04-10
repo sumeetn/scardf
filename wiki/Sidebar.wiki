@@ -1,4 +1,4 @@
-#summary To be used as a sidebar for every wiki page
+#summary To be used as a sidebar on every wiki page
 
  * [Overview Overview of API features]
  * [Vocabulary Constructing a vocabulary] 
@@ -6,3 +6,7 @@
    * [ExampleData Example graph]
  * [Traversal Traversing graphs]
  * [Querying]
+
+ * New design
+   * [NewModel]
+   * [Nodebags]
