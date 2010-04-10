@@ -4,7 +4,11 @@
 g/john/name/given
 }}}
 
-This actually gives you a *bag of RDF nodes in a graph*. This bag may be empty, or it may contain a single node or multiple nodes. To convert a node bag to a string, you use the same slash operator, but now with a *converter object*:
+This actually gives you a *bag of RDF nodes in a graph*. This bag may be empty, or it may contain a single node or multiple nodes. A special expression `g/-` yields a node bag containing all nodes present as subject in graph's triples.
+
+==Converters==
+
+To convert a node bag to a string, you use the same slash operator, but now with a *converter object*:
 {{{
 g/john/name/given/asString == "John"
 }}}
@@ -33,21 +37,22 @@ There are also converter modifiers that return collections of specific Scala obj
 g/john/likes/asNode.set == Set( swimming, science )
 }}}
 
-*Boolean expressions* in Scardf can have in different forms, to appear as natural as possible. Following expressions all return `true`:
+Unary operator `?` yields `true` if the bag is not empty and contains only boolean values `true`.
 {{{
-g/john/isMale?
+g/john/isMale? == true
 }}}
 
 If the slash operator returns an empty node list at any point, the whole expression will yield an empty bag - no exception is thrown:
 {{{
-( anna/Spouse/Name/Family ).isEmpty
+( g/anna/Spouse/Name/Family ).isEmpty
 }}}
 
 ==Filters==
 
-Special type of node bag converter is a *filter*. Place them in a path expression by using the factory object `where`:
+Special type of node bag converter is a *filter*. Place them in a path expression by using the factory objects `where` and `having`:
 {{{
-val familyMembers = g.bagOf( john, jane, anna, bob )
+val familyMembers = g/-/having( RDF.Type -> person )
+familyMembers == g.bagOf( john, jane, anna, bob )
 familyMembers/where( _/isMale? ) == g.bagOf( john, bob )
 familyMembers/where( _/spouse/isMale? )/asNode.set == Set( jane )
 familyMembers/where( _/likes contains science ) == g.bagOf( john )
