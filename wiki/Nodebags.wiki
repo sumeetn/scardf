@@ -36,7 +36,6 @@ g/john/likes/asNode.set == Set( swimming, science )
 *Boolean expressions* in Scardf can have in different forms, to appear as natural as possible. Following expressions all return `true`:
 {{{
 g/john/isMale?
-g/john has height -> 167
 }}}
 
 If the slash operator returns an empty node list at any point, the whole expression will yield an empty bag - no exception is thrown:
@@ -44,10 +43,12 @@ If the slash operator returns an empty node list at any point, the whole express
 ( anna/Spouse/Name/Family ).isEmpty
 }}}
 
+==Filters==
+
 Special type of node bag converter is a *filter*. Place them in a path expression by using the factory object `where`:
 {{{
 val familyMembers = g.bagOf( john, jane, anna, bob )
 familyMembers/where( _/isMale? ) == g.bagOf( john, bob )
 familyMembers/where( _/spouse/isMale? )/asNode.set == Set( jane )
-familyMembers/where( _/likes contains science ) == g.bagOf( john )}}}
+familyMembers/where( _/likes contains science ) == g.bagOf( john )
 }}}
