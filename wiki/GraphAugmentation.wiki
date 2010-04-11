@@ -1,0 +1,17 @@
+#labels Deprecated
+
+Augmentation is construction of additional triples based on existing graph.
+
+{{{
+
+Augment fromTriple {
+  case Triple( s, `height`, TypedLiteral( hInCm, XSD.int ) ) => 
+    List( Triple( s, meters, TypedLitral( hInCm/100, XSD.decimal ) ) )
+}
+
+Augment fromBag( _/-/name ) {
+  case n =>
+    List( Triple( n, fullName, n/givenName/asString + " " + n/familyName/asString ) )
+}
+
+}}}
