@@ -2,16 +2,30 @@
 
 Augmentation is construction of additional triples based on existing graph.
 
+Concatenate given name with string and then family name, and add it as a "fullName" property to 
+each "name" node:
+ 
 {{{
+Augment add {
+  n => n -fullName-> ( n/givenName/asString + " " + n/familyName/asString ) 
+} forEach { _/-/name }
+}}}
 
-Augment fromTriple {
-  case Triple( s, `height`, TypedLiteral( hInCm, XSD.int ) ) => 
-    List( Triple( s, meters, TypedLitral( hInCm/100, XSD.decimal ) ) )
+For each triple in the graph, if the triple describes height (given as a number of centimeters),
+construct one additional triple describing the height in meters (rounded down).
+
+{{{
+Augment triples {
+  case Triple( s, `height`, TypedLiteral( hInCm, _ ) ) => List( s -metersHigh-> ( hInCm.toInt/100 ) )
 }
+}}}
 
-Augment fromBag( _/-/name ) {
-  case n =>
-    List( Triple( n, fullName, n/givenName/asString + " " + n/familyName/asString ) )
+Add "age" property calculated as years since birthday for each subject of type "person":
+
+{{{
+Augment add {
+  p => p -age-> yearsSince( p/birthday/asLocalDate ) 
+} forEach {
+  _/-/having( RDF.Type -> person ) 
 }
-
 }}}
