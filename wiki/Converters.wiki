@@ -1,4 +1,11 @@
-#labels Deprecated
+
+Converters are functions that take objects like literal nodes, graph nodes
+or [Nodebags], and return object of another type.
+There are three types of converters in Scardf:
+ * node-to-value converters take a single `NodeFromGraph` and return some type T
+ * node-to-bag converters take a single `NodeFromGraph` and return a node bag
+ * nodebag converters take a `NodeBag` and return some type T
+
 
 ==Node-to-value converters==
 
@@ -11,16 +18,17 @@ TypedLiteral( "10", XSD.integer )/asInt == 10
 Simple values can be extracted from non-typed literals as well,
 if the lexical value can be parsed: 
 {{{
-PlainLiteral( "10", None )/asInt must_== 10
+PlainLiteral( "10" )/asInt must_== 10
 }}}
 
 There are other converters for other types of literals - you can find them in the `org.scardf.NodeConverter` object.
 {{{
-asBoolean     asString
-asInt         asFloat     asDouble
-asLocalDate
+asString   asStringIn    asLexic
+asInt      asFloat       asDouble
+asBoolean  asLocalDate   asBigDecimal
 }}}
 
+There are also converters to non-literal types, e.g.: `asNode`, `asSubjectNode`, `asGraphNode` etc.
 Of course, you can always create custom converters as needed.
 
 
@@ -28,9 +36,9 @@ Of course, you can always create custom converters as needed.
 
 A node-to-bag converter takes a node from graph and returns a bag of nodes from the same graph.
 
-A typical node-to-bag converter is a UriRef object.
-When an UriRef P it is applied to a graph node S(G), it constructs
-a node bag of all nodes O from the same graph G such that a triple (S, P, O) is in G:
+A typical node-to-bag converter is a URI reference ({UriRef}).
+When an {UriRef} _P_ it is applied to a graph node _S_(_G_), it constructs
+a node bag of all nodes _O_ from the same graph _G_ such that a triple (_S_, _P_, _O_) is in _G_:
 
 {{{
 g/john/height == g.bagOf( 167 )
@@ -41,12 +49,16 @@ g/bob/likes   == g.bagOf()
 
 ==Node bag converters==
 
-Others converters are used on bags. These are -
+While node-to-value and node-to-bag converters operate on a single node from graph,
+bag converters operate on entire bags, returning another object as a result 
+(which, in turn, may also be a node bag).
+
+Bag converters are usually derived from node converters.
 
 
-==Node-to-value and node-to-bag converters used on bags==
+==Single-node converters used on bags==
 
-Node converters work only on single-item bags (those that contain exactly one node)
+*Node-to-value* converters work only on *single-item bags* (those that contain exactly one node)
 and only when that node is convertible to its target type. They throw exceptions in any other case. 
 
 {{{
@@ -55,35 +67,44 @@ g/john/birthday/asLocalDate == new LocalDate( 1977, 07, 27 )
 g/john/birthday/asString    == "1977-07-27"
 }}}
 
-Node-to-bag converters behave in a different manner when applied to entire bags of nodes.
+*Node-to-bag* converters behave in a different manner when applied to entire bags of nodes.
 The converter is applied to each node in bag, and then all resulting bags are joined together
-to form a resulting bag.
+to form a resulting bag. For example:
 
 {{{
-g/-/likes must_== g.bagOf( science, swimming, swimming, swimming )
+g/-/likes == g.bagOf( science, swimming, swimming, swimming )
+}}}
+
+Note: multiple nodes can be filtered out using the `distinct` bag converter:
+{{{
+g/-/likes/distinct == g.bagOf( science, swimming )
 }}}
 
 
 ==Derived converters==
 
-But you can construct converters that return options or default values from any single-node converter:
-
+You can construct converters that return options or default values from any node-to-value converter.
+These bag converters are derived from the given node-to-value converter by calling modifier methods
+such as `option` and `default`:
 {{{
 g/anna/spouse/asNode.option == None
 g/anna/weight/asInt.default( 100 ) == 100
 }}}
 
-There are also converter modifiers that return collections of specific Scala objects from contained nodes. Adding a `.set` modifier returns a set of nodes instead of a single node:
-
+There are also converter modifiers that return collections of specific Scala objects from contained nodes.
+A `set` modifier returns a bag converter yielding a set of objects instead of a single object:
 {{{
 g/john/likes/asNode.set == Set( swimming, science )
+g/-/height/asInt.set must_== Set( 99, 107, 150, 167 )
 }}}
-
+ 
 
 ==Filters==
 
 Special type of node bag converter is a *filter*.
-Place them in a path expression by using the factory objects `where` and `having`:
+
+Custom filter functions can be placed in a path expression by using the factory objects `where` and `having`:
+
 {{{
 val familyMembers = g/-/having( RDF.Type -> person )
 familyMembers == g.bagOf( john, jane, anna, bob )
