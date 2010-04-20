@@ -41,25 +41,26 @@ g/bob/likes   == g.bagOf()
 
 ==Node bag converters==
 
-Others converters are used on bags. These are 
+Others converters are used on bags. These are -
 
 
 ==Node-to-value and node-to-bag converters used on bags==
 
-Node convertors work only on single-item bags (those that contain exactly one node)
+Node converters work only on single-item bags (those that contain exactly one node)
 and only when that node is convertible to its target type. They throw exceptions in any other case. 
 
 {{{
-g/-/height     == g.bagOf( 99, 107, 150, 167 )
-g/-/height.set == Set( 99, 107, 150, 167 )
+g/john/spouse/height/asInt  == 150
+g/john/birthday/asLocalDate == new LocalDate( 1977, 07, 27 )
+g/john/birthday/asString    == "1977-07-27"
 }}}
 
 Node-to-bag converters behave in a different manner when applied to entire bags of nodes.
 The converter is applied to each node in bag, and then all resulting bags are joined together
-to form a resulting bag (a union).
+to form a resulting bag.
 
 {{{
-g/-/height must_== g.bagOf( 99, 107, 150, 167 )
+g/-/likes must_== g.bagOf( science, swimming, swimming, swimming )
 }}}
 
 
