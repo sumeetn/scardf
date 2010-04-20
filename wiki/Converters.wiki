@@ -47,15 +47,6 @@ g/bob/likes   == g.bagOf()
 }}}
 
 
-==Node bag converters==
-
-While node-to-value and node-to-bag converters operate on a single node from graph,
-bag converters operate on entire bags, returning another object as a result 
-(which, in turn, may also be a node bag).
-
-Bag converters are usually derived from node converters.
-
-
 ==Single-node converters used on bags==
 
 *Node-to-value* converters work only on *single-item bags* (those that contain exactly one node)
@@ -75,10 +66,19 @@ to form a resulting bag. For example:
 g/-/likes == g.bagOf( science, swimming, swimming, swimming )
 }}}
 
-Note: multiple nodes can be filtered out using the `distinct` bag converter:
+
+==Node bag converters==
+
+While node-to-value and node-to-bag converters operate on a single node from graph,
+bag converters operate on entire bags, returning another object as a result 
+(which, in turn, may also be a node bag).
+
+For example, multiple nodes from the previous section can be filtered out using the `distinct` bag converter:
 {{{
 g/-/likes/distinct == g.bagOf( science, swimming )
 }}}
+
+But, bag converters are usually derived from node converters.
 
 
 ==Derived converters==
@@ -97,7 +97,36 @@ A `set` modifier returns a bag converter yielding a set of objects instead of a 
 g/john/likes/asNode.set == Set( swimming, science )
 g/-/height/asInt.set must_== Set( 99, 107, 150, 167 )
 }}}
- 
+
+
+==Properties==
+
+Property is a subclass of `UriRef` which associates value type and a node-to-value converter of the same type
+to the URI reference.
+
+Standard node-to-value converters are implicit vals so usually they are implied in the constructor call:
+{{{
+import NodeConverter._
+val height = Property[Int]( prefix + "height" )
+}}}
+
+Properties have additional methods that create some useful converters. So instead of using a separate
+node-to-value converter to extract a single value from bag:
+{{{
+g/john/height/asInt
+}}}
+
+you can use Property method `v` which constructs a node-to-value converter of associated type.
+This expression is shorter and it isn't redundant:
+{{{
+g/john/height.v
+}}}
+
+Property classes have all methods for deriving converters as node-to-value converters, e.g.:
+{{{
+g/-/height.set == Set( 99, 107, 150, 167 )
+}}}
+
 
 ==Filters==
 
