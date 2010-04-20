@@ -1,15 +1,14 @@
-
 Converters are functions that take objects like literal nodes, graph nodes
-or [Nodebags], and return object of another type.
+or [NodeBags], and return object of another type.
 There are three types of converters in Scardf:
- * node-to-value converters take a single `NodeFromGraph` and return some type T
- * node-to-bag converters take a single `NodeFromGraph` and return a node bag
- * nodebag converters take a `NodeBag` and return some type T
+ * *node-to-value converters* take a single `NodeFromGraph` and return some type T
+ * *node-to-bag converters* take a single `NodeFromGraph` and return a node bag
+ * *bag converters* take a `NodeBag` and return some type T
 
 
 ==Node-to-value converters==
 
-A NodeFromGraph can be converted to some specific Scala type using node-to-value converters.
+A `NodeFromGraph` can be converted to some specific Scala type using node-to-value converters.
 This example extracts an integer from a typed literal:
 {{{
 TypedLiteral( "10", XSD.integer )/asInt == 10
@@ -36,8 +35,8 @@ Of course, you can always create custom converters as needed.
 
 A node-to-bag converter takes a node from graph and returns a bag of nodes from the same graph.
 
-A typical node-to-bag converter is a URI reference ({UriRef}).
-When an {UriRef} _P_ it is applied to a graph node _S_(_G_), it constructs
+A typical node-to-bag converter is a URI reference (`UriRef`).
+When an `UriRef` _P_ it is applied to a graph node _S_(_G_), it constructs
 a node bag of all nodes _O_ from the same graph _G_ such that a triple (_S_, _P_, _O_) is in _G_:
 
 {{{
