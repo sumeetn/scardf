@@ -11,3 +11,4 @@
    * [Nodebags]
    * [Converters]
    * [PredicateTrees]
+   * [GraphAugmentation]
