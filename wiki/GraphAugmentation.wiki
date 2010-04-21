@@ -1,9 +1,7 @@
-#labels Deprecated
-
 Augmentation is construction of additional triples based on existing graph.
 
-Concatenate given name with string and then family name, and add it as a "fullName" property to 
-each "name" node:
+Example augmentation rule: Concatenate given name with string and then family name,
+and add it as a "fullName" property to each "name" node:
  
 {{{
 Augment add {
@@ -11,7 +9,8 @@ Augment add {
 } forEach { _/-/name }
 }}}
 
-For each triple in the graph, if the triple describes height (given as a number of centimeters),
+Another example: For each triple in the graph, if the triple describes height 
+(given as a number of centimeters),
 construct one additional triple describing the height in meters (rounded down).
 
 {{{
@@ -20,7 +19,7 @@ Augment triples {
 }
 }}}
 
-Add "age" property calculated as years since birthday for each subject of type "person":
+Another: Add "age" property calculated as years since birth for each subject of type "person":
 
 {{{
 Augment add {
