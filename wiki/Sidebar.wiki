@@ -10,3 +10,4 @@
    * [NewModel]
    * [Nodebags]
    * [Converters]
+   * [PredicateTrees]
