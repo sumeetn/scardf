@@ -3,10 +3,10 @@ Augmentation is construction of additional triples based on existing graph.
 Example augmentation rule: Concatenate given name with string and then family name,
 and add it as a "fullName" property to each "name" node:
 
-Use the `Augment` object to form `add _function( GraphNode )_ forEach _function( NodeBag )_` statements:
+Use the `Augment` object to form `add` _( !GraphNode => Branch )_ `forEach` _( Graph => !NodeBag )_ statements:
 {{{
 Augment add {
-  n => n -fullName-> ( n/givenName.v+ " " + n/familyName.v ) 
+  n => n -fullName-> ( n/givenName.v + " " + n/familyName.v ) 
 } forEach { _/-/name }
 }}}
 
