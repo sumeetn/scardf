@@ -6,7 +6,7 @@
    * [ExampleData Example graph]
  * [Traversal Traversing graphs]
  * [Querying]
- * _New design_ (coming soon)
+ * *New design*
    * [NewModel]
    * [Nodebags]
    * [Converters]
