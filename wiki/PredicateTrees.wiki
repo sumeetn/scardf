@@ -1,8 +1,6 @@
+A predicate tree is a construct used for extracting a subset of a larger RDF graph and a given root node.
 
-A predicate tree is a construct for extracting a subgraph from a larger RDF graph,
-starting from a root node.
-
-Tree nodes are URI references are connected using the tilde operator: 
+Predicate tree consists of URI references, connected together using the tilde operator: 
 {{{
 val pt1 = name~( given, family )
 }}}
@@ -17,7 +15,7 @@ The result is a node `:john` in this new graph:
 :john p:name [ p:given "John"; p:family "Doe" ] .
 }}}
 
-Note: The new graph is independent from the source graph, and not just a restricted view.
+Note: The new graph is independent copy of the source graph, and not just a restricted view.
 
 Multiple branches can be specified with a companion object `PredicateTree`:
 {{{
