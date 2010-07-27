@@ -8,9 +8,7 @@
 
 == Scala pattern matching ==
 
-Scala's `match` method
-
-In this example we filter out all triples in graph `g` in the form _:anna :height ?x_
+Scala's built-in pattern matching is a big help in filtering triples from a graph. In this example we filter out all triples in graph `g` in the form _:anna :height ?x_
 
 {{{
 g.triples filter {
@@ -31,7 +29,7 @@ g.triplesMatching{
 }
 }}}
 
-The `triplesMatching` method includes a `case _ => false` clause
+This example using `triplesMatching` method is equivalent, but much shorter than the example above.
 
 This expression filters all triples stating that someone's height is under 100 cm:
 
@@ -55,3 +53,5 @@ Companion objects `SubjectNode`, `UriRef`, `Literal` and `Blank` are used for ma
 {{{
 g.triplesLike( Node, height, { h: Literal => asInt(h) < 100 } )
 }}}
+
+The `triplesLike` method is the *preferred way* of filtering triples in graph because they are declarative. Implementations can use this information to optimize the filtering process, e.g. by using indices or modifying query strings.
