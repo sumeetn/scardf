@@ -1,7 +1,6 @@
 #labels Deprecated
 @@NOTE: NOT YET IN SOURCE REPOSITORY
 
-
 = Filtering triples =
 
 
@@ -27,9 +26,9 @@ g.triplesMatching{
 }
 }}}
 
-This example using `triplesMatching` method is equivalent, but much shorter than the example above.
+This example using `triplesMatching` method is equivalent to the example above.
 
-This expression filters all triples stating that someone's height is under 100 cm:
+For another example, this expression filters all triples stating that someone's height is under 100 cm:
 
 {{{
 g.triplesMatching{
