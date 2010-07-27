@@ -12,10 +12,8 @@ Scala's built-in pattern matching is a big help in filtering triples from a grap
 
 {{{
 g.triples filter {
-  _ match {
-    case Triple( `anna`, `height`, _ ) => true
-    case _ => false
-  }
+  case Triple( `anna`, `height`, _ ) => true
+  case _ => false
 }
 }}}
 
