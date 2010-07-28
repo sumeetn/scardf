@@ -1,8 +1,6 @@
-#labels Deprecated
-@@NOTE: NOT YET IN SOURCE REPOSITORY
-
 = Filtering triples =
 
+A simple way of extracting information from a graph is by filtering a set of triples to see which, if any, satisfy a given criteria. You can use three techniques which for a given graph `g` return an `Iterable[Triple]`.
 
 
 == Scala pattern matching ==
@@ -15,6 +13,8 @@ g.triples filter {
   case _ => false
 }
 }}}
+
+Back ticks arround `anna` and `height` must be used that the compiler would not interpret them as pattern variables.
 
 
 == `triplesMatching` method ==
