@@ -1,0 +1,21 @@
+#summary One-sentence summary of this page.
+
+<table>
+<tt><td>*Jena*</td><td>*Scardf*</td></tt>
+<tr><td><code>
+Model model = ModelFactory.createDefaultModel();
+model.createResource( "http://somewhere/JohnSmith" )
+  .addProperty( N,
+    model.createResource()
+      .addProperty( Given, "John" )
+      .addProperty( Family, "Smith" ) );
+</code></td>
+<td><code>
+val graph = Graph.build( 
+  johnSmith -N-> Branch( 
+    Given -> "John", Family -> "Smith" ) 
+  ) 
+)
+</code></td>
+</tr>
+</table>
