@@ -1,0 +1,15 @@
+#summary To be used as a sidebar on every wiki page
+#labels Deprecated
+
+ * [NewModel Model]
+ * [Nodebags]
+ * [Converters]
+ * [PredicateTrees Predicate trees]
+ * [GraphAugmentation Graph augmentation]
+ * *Old API*
+   * [Overview Overview of API features]
+   * [Vocabulary Constructing a vocabulary] 
+   * [Building Building a graph]
+     * [ExampleData Example graph]
+   * [Traversal Traversing graphs]
+   * [Querying]
