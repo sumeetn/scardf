@@ -12,7 +12,7 @@ model.createResource( "http://somewhere/JohnSmith" )
 </code></td>
 <td><code>
 val graph = Graph.build( 
-  johnSmith -N-> Branch( 
+  UriRef( "http://somewhere/JohnSmith" ) -N-> Branch( 
     Given -> "John", Family -> "Smith" ) 
   ) 
 )
