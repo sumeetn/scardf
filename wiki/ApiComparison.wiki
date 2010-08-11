@@ -3,7 +3,7 @@
 <table>
 <tt><td>*Jena*</td><td>*Scardf*</td></tt>
 <tr><td><code>
-Model model = ModelFactory.createDefaultModel();
+Model model = !ModelFactory.createDefaultModel();
 model.createResource( "http://somewhere/JohnSmith" )
   .addProperty( N,
     model.createResource()
@@ -12,8 +12,8 @@ model.createResource( "http://somewhere/JohnSmith" )
 </code></td>
 <td><code>
 val graph = Graph.build( 
-  UriRef( "http://somewhere/JohnSmith" ) -N-> Branch( 
-    Given -> "John", Family -> "Smith" ) 
+  !UriRef( "http://somewhere/JohnSmith" ) -N-> Branch( 
+    Given -> "John", Family -> "Smith"
   ) 
 )
 </code></td>
