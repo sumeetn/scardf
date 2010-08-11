@@ -1,0 +1,14 @@
+#summary changes between versions
+
+
+== version 0.4 ==
+
+* upgrade to Scala 2.8.0
+* necessary minor changes in code
+
+== version 0.3 ==
+
+* complete redesign and rewrite
+* new package name org.scardf
+* core with no dependency
+* Jena implementation in seperate package org.scardf.jena
