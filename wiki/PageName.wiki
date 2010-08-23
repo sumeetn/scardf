@@ -28,7 +28,7 @@ An RDF graph is constructed using nested expressions:
 val john = UriRef( "http://doe.eg#john" )
 val g = Graph.build( john -( 
   RDF.Type -> Person,
-  IsMale -> true,
+  isMale -> true,
   name -> Branch( given -> "John", family -> "Doe" ),
   height -> 167, 
   likes -> ObjSet( swimming, science )
@@ -39,15 +39,15 @@ val g = Graph.build( john -(
 
 A graph can be traversed with a slash operator forming an XPath-like expressions:
 {{{
-john/Name/Given
+john/name/given
 }}}
 
 These yield a bag of RDF node objects. If you expect a single string, you append the `asString` converter object:
 {{{
-john/Name/Given/asString == "John"
+john/name/given/asString == "John"
 }}}
 
 Converters also have modifiers which yield collections of Scala objects:
 {{{
-john/Likes/asRes.set == Set( Swimming, Science )
+john/likes/asNode.set == Set( Swimming, Science )
 }}}
