@@ -5,7 +5,7 @@
  * [Converters]
  * [PredicateTrees]
  * [GraphAugmentation]
- * *old API* `net.croz.scardf`
+ * *old API* (`net.croz.scardf`)
    * [Overview Overview of API features]
    * [Vocabulary Constructing a vocabulary] 
    * [Building Building a graph]
