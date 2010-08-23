@@ -1,5 +1,6 @@
 #summary To be used as a sidebar on every wiki page
 
+ * [ApiOverview]
  * [NewModel Model]
  * [Nodebags]
  * [Converters]
