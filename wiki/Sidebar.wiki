@@ -1,14 +1,14 @@
 #summary To be used as a sidebar on every wiki page
 
- * [Overview Overview of API features]
- * [Vocabulary Constructing a vocabulary] 
- * [Building Building a graph]
-   * [ExampleData Example graph]
- * [Traversal Traversing graphs]
- * [Querying]
- * *New design*
-   * [NewModel]
-   * [Nodebags]
-   * [Converters]
-   * [PredicateTrees]
-   * [GraphAugmentation]
+ * [NewModel Model]
+ * [Nodebags]
+ * [Converters]
+ * [PredicateTrees]
+ * [GraphAugmentation]
+ * *old API* `net.croz.scardf`
+   * [Overview Overview of API features]
+   * [Vocabulary Constructing a vocabulary] 
+   * [Building Building a graph]
+     * [ExampleData Example graph]
+   * [Traversal Traversing graphs]
+   * [Querying]
