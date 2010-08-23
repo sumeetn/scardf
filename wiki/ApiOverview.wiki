@@ -15,7 +15,7 @@ object PeopleVocabulary extends Vocabulary( "http://person.eg#" ) {
 }
 }}}
 
-== [Building] a graph ==
+== Building a graph ==
 
 You can add statements to the model using a Scala assignment, or a method named `state`:
 {{{
@@ -35,7 +35,7 @@ val g = Graph.build( john -(
 ) )
 }}}
 
-== [Traversal Traversing] a graph ==
+== Traversing a graph ==
 
 A graph can be traversed with a slash operator forming an XPath-like expressions:
 {{{
