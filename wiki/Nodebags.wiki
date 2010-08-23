@@ -33,5 +33,5 @@ g/john/isMale? == true
 If the slash operator returns an empty node list at any point, the whole expression will yield an empty bag
 - no exception is thrown:
 {{{
-( g/anna/Spouse/Name/Family ).isEmpty
+( g/anna/spouse/name/family ).isEmpty
 }}}
