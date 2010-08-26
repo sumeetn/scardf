@@ -1,5 +1,7 @@
 #summary Overview of DSL features of Scardf
 
+  Note: _This page describes the new `org.scardf` API. Old API is described [Overview here]._
+
 == Defining a vocabulary ==
 
 You can define values in an `object` to define your vocabulary and the basic ontology:
