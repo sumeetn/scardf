@@ -11,19 +11,13 @@ object PeopleVocabulary extends Vocabulary( "http://person.eg#" ) {
   val Hobby = ÷( "Hobby" )
   val Swimming = ÷( "Swimming" )
   val Science = ÷( "Science" )
-  val Likes = prop( "Likes" )
-  val IsMale = prop( "IsMale" )
-  val Height = propInt( "Height" )
+  val likes = prop( "Likes" )
+  val isMale = prop( "IsMale" )
+  val height = propInt( "Height" )
 }
 }}}
 
 == Building a graph ==
-
-You can add statements to the model using a Scala assignment, or a method named `state`:
-{{{
-Height( john ) = 167
-john state( IsMale -> true, Likes -> (Swimming, Science) )
-}}}
 
 An RDF graph is constructed using nested expressions:
 {{{
@@ -33,7 +27,7 @@ val g = Graph.build( john -(
   isMale -> true,
   name -> Branch( given -> "John", family -> "Doe" ),
   height -> 167, 
-  likes -> ObjSet( swimming, science )
+  likes -> ObjSet( Swimming, Science )
 ) )
 }}}
 
