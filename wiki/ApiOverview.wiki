@@ -1,6 +1,6 @@
 #summary Overview of DSL features of Scardf
 
-  Note: _This page describes the new `org.scardf` API. Old API is described [Overview here]._
+  Note: _This page describes the new `org.scardf` API. The old API is described [Overview here]._
 
 == Defining a vocabulary ==
 
