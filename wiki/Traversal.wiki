@@ -1,5 +1,7 @@
 #summary API for traversing a RDF graph
 
+<blockquote><b>Note</b>: _This page describes the old `net.croz.scardf` API. Check out *[ApiOverview the new version]*.</blockquote>
+
 Reading a property from a RDF resource is simple:
 {{{
 Given( Name( john ) ) == Lit( "John" )
