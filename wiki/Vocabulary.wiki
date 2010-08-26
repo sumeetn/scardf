@@ -1,5 +1,7 @@
 #summary Defining RDF graphs
 
+  Note: _This page describes the old API `net.croz.scardf`. Check out [ApiOverview the new version].
+
 Vocabularies are easily defined as Scala objects of class Vocabulary. You can specify namespace URI as a prefix in the superclass constructor:
 
 {{{
