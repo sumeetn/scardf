@@ -1,4 +1,5 @@
 #summary Overview of DSL features of Scardf
+#labels Featured
 
   Note: _This page describes the new `org.scardf` API. The old API is described [Overview here]._
 
