@@ -5,18 +5,31 @@
 
 == Defining a vocabulary ==
 
-You can define values in an `object` to define your vocabulary and the basic ontology:
+Typically, you define URI references as `val`s in an object extending the `Vocabulary`:
 {{{
 object PeopleVocabulary extends Vocabulary( "http://person.eg#" ) {
-  val Person = ÷( "Person" )
-  val Hobby = ÷( "Hobby" )
-  val Swimming = ÷( "Swimming" )
-  val Science = ÷( "Science" )
+  val Person = uriref( "Person" )
+  val Hobby = uriref( "Hobby" )
+  val Swimming = uriref( "Swimming" )
+  val Science = uriref( "Science" )
   val likes = prop( "Likes" )
   val isMale = prop( "IsMale" )
   val height = propInt( "Height" )
 }
 }}}
+
+Prefix for all URI references is given as a parameter for `Vocabulary`, so:
+{{{
+PeopleVocabulary.uriref( "Person" )
+}}}
+
+is the same as:
+{{{
+UriRef( "http://person.eg#Person" )
+}}}
+
+`Vocabulary` methods `prop`, `propInt` etc. also construct URI references, but of the subclass `Property`. For more details, see [Converters#Properties].
+
 
 == Building a graph ==
 
@@ -48,3 +61,5 @@ Converters also have modifiers which yield collections of Scala objects:
 {{{
 john/likes/asNode.set == Set( Swimming, Science )
 }}}
+
+For more details, see pages on [Nodebags] and [Converters].
