@@ -1,4 +1,14 @@
+== Graph nodes ==
+
 [GraphNode Graph nodes] are objects that pair up URI references or blank nodes with a specific graph.
+
+Take a look at the vocabularies in the [Example]:
+{{
+import PeopleVoc._
+import Doe._
+val g = Doe.graph
+}}
+
 `john` in the context of graph `g` is written like this:
 {{{
 g/john
@@ -9,6 +19,8 @@ You can connect these operations to form a *path expression*, like in XPath:
 {{{
 g/john/name/given
 }}}
+
+== Nodebags ==
 
 This actually gives you a *bag of RDF nodes* in a single graph.
 This bag may contain any number of nodes, or no nodes at all.
