@@ -1,7 +1,6 @@
-
-Triples contain a subject node, a predicate (UriRef) and an RDF object (Node),  
+A graph is a set of triples, which contain a subject node, a predicate (`UriRef`) and an RDF object (`Node`):
 {{{
-Triple( john, height, TypedLiteral( 167, XSD.int ) )
+RdfTriple( john, height, TypedLiteral( 167, XSD.int ) )
 }}}
 
 Assigned objects may be RDF nodes, but also some general Scala objects: Strings, Ints, Booleans...
@@ -9,7 +8,7 @@ Assigned objects may be RDF nodes, but also some general Scala objects: Strings,
 john -height-> 167
 }}}
 
-Factory method `Graph.build` is used to construct 
+Factory method `Graph.build` is used to construct graphs from branches.
 {{{
 Graph.build( john -height-> 167 )
 }}}
@@ -19,7 +18,7 @@ You can assign multiple properties to a single subject, with multiple values of 
 john -( isMale -> true, likes -> swimming, likes -> science )
 }}}
 
-Assigning multiple values can be shortened using ´ObjSet´:
+Assigning multiple values can be shortened using `ObjSet`:
 {{{
 john -likes-> ObjSet( swimming, science )
 }}}
@@ -33,4 +32,3 @@ john -(
 }}}
 
 A more deliberate example of graph building can be found at the [Example] page.
-
