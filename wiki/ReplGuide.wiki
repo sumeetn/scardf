@@ -25,11 +25,26 @@ index: org.scardf.UriRef = <http://www.example.org/index.html>
 }}}
 
 {{{
-scala> index -(
+scala> val b = index -(
      |   exterms\"creation-date" -> "August 16, 1999",
      |   dc\"language" -> "en",
      |   dc\"creator" -> UriRef( "http://example.org/staffid/85740" )
      | )
 res0: org.scardf.Branch = <http://www.example.org/index.html>( (<http://www.example.org/termscreation-date>,{"August 16, 1999"}), (<http://purl.org/d
 c/elements/1.1/#language>,{"en"}), (<http://purl.org/dc/elements/1.1/#creator>,{<http://example.org/staffid/85740>}) )
+}}}
+
+This is a Branch. To make a graph, 
+{{{
+scala> val g = Graph.build( b )
+g: org.scardf.SetGraph = SetGraph[ 3 triples ]
+}}}
+
+Let's make sure the graph contains the correct triples:
+{{{
+scala> g.rend
+res7: String =
+<http://www.example.org/index.html> <http://www.example.org/termscreation-date> "August 16, 1999" .
+<http://www.example.org/index.html> <http://purl.org/dc/elements/1.1/#language> "en" .
+<http://www.example.org/index.html> <http://purl.org/dc/elements/1.1/#creator> <http://example.org/staffid/85740> .
 }}}
