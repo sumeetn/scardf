@@ -17,9 +17,9 @@ familyMembers/where( _/spouse/isMale? )
 <tr><td>
 _Family members which like science._
 </td>
-<td><code>
+<td>{{{
 familyMembers/where( _/likes contains science )
-</code></td>
+}}}</td>
 </tr>
 <tr><td>
 _Triples stating that something's height is less than 100 (cm)._
