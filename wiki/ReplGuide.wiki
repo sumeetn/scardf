@@ -11,10 +11,13 @@ Let's get our toes wet using the Scala REPL (the Read-Eval-Print Loop). We'll co
 
 Start the Scala REPL. You will need to add Scardf ([http://code.google.com/p/scardf/downloads/list download]) and [http://joda-time.sourceforge.net Joda Time] ([http://sourceforge.net/projects/joda-time/files/joda-time/1.6/joda-time-1.6.zip/download download]) to the classpath (use the `:cp` instruction).
 
-Now, let's import the package and create our first object:
+Now, let's import the org.scardf package and the LocalDate class, then create our first Scardf object:
 {{{
 scala> import org.scardf._
 import org.scardf._
+
+scala> import org.joda.time.LocalDate
+import org.joda.time.LocalDate
 
 scala> val dc = Vocabulary( "http://purl.org/dc/elements/1.1/#" )
 dc: org.scardf.Vocabulary = Vocabulary(http://purl.org/dc/elements/1.1/#)
@@ -26,17 +29,17 @@ scala> val homepage = UriRef( "http://www.example.org/index.html" )
 homepage: org.scardf.UriRef = <http://www.example.org/index.html>
 }}}
 
-This is how 
+Statement constructing the graph is pretty similar to the Turtle syntax, thanks to Scala DSL capabilities:
 {{{
 scala> val b = homepage -(
-     |   dc\"date" -> new org.joda.time.LocalDate( 1999, 8, 16 ),
+     |   dc\"date" -> new LocalDate( 1999, 8, 16 ),
      |   dc\"language" -> "en",
      |   dc\"creator" -> UriRef( "http://example.org/staffid/85740" )
      | )
 b: org.scardf.Branch = <http://www.example.org/index.html>-( (<http://purl.org/dc/elements/1.1/#date>,{TypedLiteral("1999-08-16", <http://www.w3.org/2001/XMLSchema#date>)}), (<http://purl.org/dc/elements/1.1/#language>,{PlainLiteral("en")}), (<http://purl.org/dc/elements/1.1/#creator>,{<http://example.org/staffid/85740>}) )
 }}}
 
-This construct is called a Branch. To make a proper graph, we use the `Graph.build` method:
+This Scardf construct is a `Branch`, and it's only used as a tool in building graphs. To make a proper graph, we use the `Graph.build` method:
 {{{
 scala> val g = Graph.build( b )
 g: org.scardf.SetGraph = SetGraph[ 3 triples ]
