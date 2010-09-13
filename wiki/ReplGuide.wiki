@@ -11,7 +11,7 @@ Let's get our toes wet using the Scala REPL (the Read-Eval-Print Loop). We'll co
 
 Start the Scala REPL. You will need to add Scardf ([http://code.google.com/p/scardf/downloads/list download]) and [http://joda-time.sourceforge.net Joda Time] ([http://sourceforge.net/projects/joda-time/files/joda-time/1.6/joda-time-1.6.zip/download download]) to the classpath (use the `:cp` instruction).
 
-Now, let's import the org.scardf package and the LocalDate class, then create our first Scardf object:
+Now, let's import the org.scardf package and the `LocalDate` class, then create our first Scardf object:
 {{{
 scala> import org.scardf._
 import org.scardf._
