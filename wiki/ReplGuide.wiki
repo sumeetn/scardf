@@ -1,50 +1,64 @@
 {{{
-@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix dc:      <http://purl.org/dc/elements/1.1/#>.
-@prefix exterms: <hhttp://www.example.org/terms/>.
 
 <http://www.example.org/index.html> 
-    exterms:creation-date "August 16, 1999";
-    dc:language "en";
-    dc:creator <http://www.example.org/staffid/85740>.
+    dc:date "1999-08-16"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    dc:language "en" ;
+    dc:creator <http://www.example.org/staffid/85740> .
 }}}
 
-Start the Scala REPL. You will need to import Scardf and Joda Time into the classpath (use the `:cp` instruction).
+Start the Scala REPL. You will need to add Scardf and Joda Time into the classpath (use the `:cp` instruction).
 
+Now, let's import the package and create our first object:
 {{{
+scala> import org.scardf._
+import org.scardf._
+
 scala> val dc = Vocabulary( "http://purl.org/dc/elements/1.1/#" )
 dc: org.scardf.Vocabulary = Vocabulary(http://purl.org/dc/elements/1.1/#)
-
-scala> val exterms = Vocabulary( "http://www.example.org/terms" )
-exterms: org.scardf.Vocabulary = Vocabulary(http://www.example.org/terms)
 }}}
 
+The vocabulary will be handy to use as an URI prefix. URI references can be costructed without them:
 {{{
-scala> val index = UriRef( "http://www.example.org/index.html" )
-index: org.scardf.UriRef = <http://www.example.org/index.html>
+scala> val homepage = UriRef( "http://www.example.org/index.html" )
+homepage: org.scardf.UriRef = <http://www.example.org/index.html>
 }}}
 
+This is how 
 {{{
-scala> val b = index -(
-     |   exterms\"creation-date" -> "August 16, 1999",
+scala> val b = homepage -(
+     |   dc\"date" -> new org.joda.time.LocalDate( 1999, 8, 16 ),
      |   dc\"language" -> "en",
      |   dc\"creator" -> UriRef( "http://example.org/staffid/85740" )
      | )
-res0: org.scardf.Branch = <http://www.example.org/index.html>( (<http://www.example.org/termscreation-date>,{"August 16, 1999"}), (<http://purl.org/d
-c/elements/1.1/#language>,{"en"}), (<http://purl.org/dc/elements/1.1/#creator>,{<http://example.org/staffid/85740>}) )
 }}}
 
-This is a Branch. To make a graph, 
+This construct is called a Branch. To make a proper graph, we use the `Graph.build` method:
 {{{
 scala> val g = Graph.build( b )
 g: org.scardf.SetGraph = SetGraph[ 3 triples ]
 }}}
 
-Let's make sure the graph contains the correct triples:
+Let's make sure the graph contains the correct triples. Its `rend` method will render every triple in graph in the N-TRIPLES format:
 {{{
 scala> g.rend
-res7: String =
-<http://www.example.org/index.html> <http://www.example.org/termscreation-date> "August 16, 1999" .
+res0: String =
+<http://www.example.org/index.html> <http://purl.org/dc/elements/1.1/#date> "1999-08-16"^^<http://www.w3.org/2001/XMLSchema#date> .
 <http://www.example.org/index.html> <http://purl.org/dc/elements/1.1/#language> "en" .
 <http://www.example.org/index.html> <http://purl.org/dc/elements/1.1/#creator> <http://example.org/staffid/85740> .
+}}}
+
+{{{
+scala> g/homepage
+res1: org.scardf.GraphNode = GraphNode(<http://www.example.org/index.html>,SetGraph[ 3 triples ])
+}}}
+
+{{{
+scala> g/homepage/dc\"date"
+res2: org.scardf.NodeBag = NodeBag(TypedLiteral("1999-08-16", <http://www.w3.org/2001/XMLSchema#date>))
+}}}
+
+{{{
+scala> g/homepage/dc\"date"/NodeConverter.asLocalDate
+res3: org.joda.time.LocalDate = 1999-08-16
 }}}
