@@ -1,4 +1,4 @@
-Let's get our toes wet using the Scala REPL (the Read-Eval-Print Loop). We'll construct this graph (adapted from the RDF Primer):
+Let's get our toes wet using the Scala REPL (the Read-Eval-Print Loop). We'll construct this graph (adapted from the RDF Primer), written here in [http://www.w3.org/TeamSubmission/turtle Turtle]:
 
 {{{
 @prefix dc:      <http://purl.org/dc/elements/1.1/#>.
