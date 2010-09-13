@@ -3,11 +3,11 @@
 [GraphNode Graph nodes] are objects that pair up URI references or blank nodes with a specific graph.
 
 Take a look at the vocabularies in the [Example]:
-{{
+{{{
 import PeopleVoc._
 import Doe._
 val g = Doe.graph
-}}
+}}}
 
 `john` in the context of graph `g` is written like this:
 {{{
