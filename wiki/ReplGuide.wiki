@@ -1,0 +1,35 @@
+{{{
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix dc:      <http://purl.org/dc/elements/1.1/#>.
+@prefix exterms: <hhttp://www.example.org/terms/>.
+
+<http://www.example.org/index.html> 
+    exterms:creation-date "August 16, 1999";
+    dc:language "en";
+    dc:creator <http://www.example.org/staffid/85740>.
+}}}
+
+Start the Scala REPL. You will need to import Scardf and Joda Time into the classpath (use the `:cp` instruction).
+
+{{{
+scala> val dc = Vocabulary( "http://purl.org/dc/elements/1.1/#" )
+dc: org.scardf.Vocabulary = Vocabulary(http://purl.org/dc/elements/1.1/#)
+
+scala> val exterms = Vocabulary( "http://www.example.org/terms" )
+exterms: org.scardf.Vocabulary = Vocabulary(http://www.example.org/terms)
+}}}
+
+{{{
+scala> val index = UriRef( "http://www.example.org/index.html" )
+index: org.scardf.UriRef = <http://www.example.org/index.html>
+}}}
+
+{{{
+scala> index -(
+     |   exterms\"creation-date" -> "August 16, 1999",
+     |   dc\"language" -> "en",
+     |   dc\"creator" -> UriRef( "http://example.org/staffid/85740" )
+     | )
+res0: org.scardf.Branch = <http://www.example.org/index.html>( (<http://www.example.org/termscreation-date>,{"August 16, 1999"}), (<http://purl.org/d
+c/elements/1.1/#language>,{"en"}), (<http://purl.org/dc/elements/1.1/#creator>,{<http://example.org/staffid/85740>}) )
+}}}
