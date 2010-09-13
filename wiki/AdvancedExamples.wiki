@@ -11,14 +11,14 @@ val familyMembers = g/-/having( RDF.Type -> person )
 _All family members who have a male spouse_
 </td>
 <td><code>
-familyMembers/where( _/spouse/isMale? )
+`familyMembers/where( _/spouse/isMale? )`
 </code></td>
 </tr>
 <tr><td>
 _Family members which like science._
 </td>
 <td>
-<code>familyMembers/where( _/likes contains science )</code>
+`familyMembers/where( _/likes contains science )`
 </td>
 </tr>
 <tr><td>
