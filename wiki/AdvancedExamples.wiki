@@ -1,21 +1,28 @@
 <table>
 <tt><td>*English*</td><td>*Scardf*</td></tt>
 <tr><td>
-Family members are resources of type "person"
+_Family members are resources of type "person"_
 </td>
 <td><code>
 val familyMembers = g/-/having( RDF.Type -> person )
 </code></td>
 </tr>
 <tr><td>
-All family members who have a male spouse
+_All family members who have a male spouse_
 </td>
 <td><code>
 familyMembers/where( _/spouse/isMale? )
 </code></td>
 </tr>
 <tr><td>
-Triples stating that something's height is less than 100 (cm).
+_Family members which like science._
+</td>
+<td><code>
+familyMembers/where( _/likes contains science )
+</code></td>
+</tr>
+<tr><td>
+_Triples stating that something's height is less than 100 (cm)._
 </td>
 <td><code>
 g.triplesLike( Node, height, { h: Literal => asInt(h) < 100 } )
