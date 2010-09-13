@@ -7,7 +7,7 @@
     dc:creator <http://www.example.org/staffid/85740> .
 }}}
 
-Start the Scala REPL. You will need to add Scardf and Joda Time into the classpath (use the `:cp` instruction).
+Start the Scala REPL. You will need to add Scardf ([http://code.google.com/p/scardf/downloads/list download]) and [http://joda-time.sourceforge.net Joda Time] ([http://sourceforge.net/projects/joda-time/files/joda-time/1.6/joda-time-1.6.zip/download download]) to the classpath (use the `:cp` instruction).
 
 Now, let's import the package and create our first object:
 {{{
@@ -31,6 +31,7 @@ scala> val b = homepage -(
      |   dc\"language" -> "en",
      |   dc\"creator" -> UriRef( "http://example.org/staffid/85740" )
      | )
+b: org.scardf.Branch = <http://www.example.org/index.html>-( (<http://purl.org/dc/elements/1.1/#date>,{TypedLiteral("1999-08-16", <http://www.w3.org/2001/XMLSchema#date>)}), (<http://purl.org/dc/elements/1.1/#language>,{PlainLiteral("en")}), (<http://purl.org/dc/elements/1.1/#creator>,{<http://example.org/staffid/85740>}) )
 }}}
 
 This construct is called a Branch. To make a proper graph, we use the `Graph.build` method:
@@ -48,16 +49,19 @@ res0: String =
 <http://www.example.org/index.html> <http://purl.org/dc/elements/1.1/#creator> <http://example.org/staffid/85740> .
 }}}
 
+To query the graph, a concept of [Graphnode graph nodes] - a URI reference within a graph - pops into use:
 {{{
 scala> g/homepage
 res1: org.scardf.GraphNode = GraphNode(<http://www.example.org/index.html>,SetGraph[ 3 triples ])
 }}}
 
+From graph nodes you can construct paths by adding predicates, like this:
 {{{
 scala> g/homepage/dc\"date"
 res2: org.scardf.NodeBag = NodeBag(TypedLiteral("1999-08-16", <http://www.w3.org/2001/XMLSchema#date>))
 }}}
 
+Predicates result in node bags. You can extract single values using [Converters node converters]:
 {{{
 scala> g/homepage/dc\"date"/NodeConverter.asLocalDate
 res3: org.joda.time.LocalDate = 1999-08-16
