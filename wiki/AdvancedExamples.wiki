@@ -9,6 +9,10 @@
 <td>`familyMembers/where( _/spouse/isMale? )`</td>
 </tr>
 <tr>
+<td>_John's weight is not stated in graph_</td>
+<td>`g/john has( weight -> None )`</td>
+</tr>
+<tr>
 <td>_Family members which like science._</td>
 <td>`familyMembers/where( _/likes contains science )`</td>
 </tr>
