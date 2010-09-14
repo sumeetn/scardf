@@ -23,25 +23,19 @@ scala> val dc = Vocabulary( "http://purl.org/dc/elements/1.1/#" )
 dc: org.scardf.Vocabulary = Vocabulary(http://purl.org/dc/elements/1.1/#)
 }}}
 
-The vocabulary will be handy to use as an URI prefix. URI references can be costructed without them:
+The vocabulary will be handy to use as an URI prefix, writing `dc\"date"` to mimic Turtle's `dc:date`. However, URI references can be costructed without them just fine:
 {{{
 scala> val homepage = UriRef( "http://www.example.org/index.html" )
 homepage: org.scardf.UriRef = <http://www.example.org/index.html>
 }}}
 
-Statement constructing the graph is pretty similar to the Turtle syntax, thanks to Scala DSL capabilities:
+Expression constructing the graph is similar to the Turtle syntax, thanks to Scala DSL capabilities:
 {{{
-scala> val b = homepage -(
+scala> val g = Graph( homepage -(
      |   dc\"date" -> new LocalDate( 1999, 8, 16 ),
      |   dc\"language" -> "en",
      |   dc\"creator" -> UriRef( "http://example.org/staffid/85740" )
-     | )
-b: org.scardf.Branch = <http://www.example.org/index.html>-( (<http://purl.org/dc/elements/1.1/#date>,{TypedLiteral("1999-08-16", <http://www.w3.org/2001/XMLSchema#date>)}), (<http://purl.org/dc/elements/1.1/#language>,{PlainLiteral("en")}), (<http://purl.org/dc/elements/1.1/#creator>,{<http://example.org/staffid/85740>}) )
-}}}
-
-This Scardf construct is a `Branch`, and it's only used as a tool in building graphs. To make a proper graph, we use the `Graph` object:
-{{{
-scala> val g = Graph( b )
+     | ) )
 g: org.scardf.SetGraph = SetGraph[ 3 triples ]
 }}}
 
