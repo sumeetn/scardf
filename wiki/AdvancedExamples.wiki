@@ -1,15 +1,15 @@
-<table>
+<table cellpadding="5">
 <tt><td>*English*</td><td>*Scardf*</td></tt>
 <tr>
-<td>_Family members are resources of type "person"_</td>
+<td>_Family members are resources of type "person"._</td>
 <td>`val familyMembers = g/-/having( RDF.Type -> person )`</td>
 </tr>
 <tr>
-<td>_All family members who have a male spouse_</td>
+<td>_All family members who have a male spouse._</td>
 <td>`familyMembers/where( _/spouse/isMale? )`</td>
 </tr>
 <tr>
-<td>_John's weight is not stated in graph_</td>
+<td>_John's weight is not stated in graph g._</td>
 <td>`g/john has( weight -> None )`</td>
 </tr>
 <tr>
