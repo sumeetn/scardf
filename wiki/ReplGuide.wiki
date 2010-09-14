@@ -1,4 +1,4 @@
-Let's get our toes wet using the Scala REPL (the Read-Eval-Print Loop). We'll construct this graph (adapted from the RDF Primer), written here in [http://www.w3.org/TeamSubmission/turtle Turtle]:
+Let's get our toes wet using the Scala interactive interpreter, aka the REPL (Read-Eval-Print Loop). We'll construct this graph (adapted from the RDF Primer), written here in [http://www.w3.org/TeamSubmission/turtle Turtle]:
 
 {{{
 @prefix dc:      <http://purl.org/dc/elements/1.1/#>.
@@ -9,7 +9,7 @@ Let's get our toes wet using the Scala REPL (the Read-Eval-Print Loop). We'll co
     dc:creator <http://www.example.org/staffid/85740> .
 }}}
 
-Start the Scala REPL. You will need to add Scardf ([http://code.google.com/p/scardf/downloads/list download]) and [http://joda-time.sourceforge.net Joda Time] ([http://sourceforge.net/projects/joda-time/files/joda-time/1.6/joda-time-1.6.zip/download download]) to the classpath (use the `:cp` instruction).
+Start the interpreter. You will need to add Scardf ([http://code.google.com/p/scardf/downloads/list download]) and [http://joda-time.sourceforge.net Joda Time] ([http://sourceforge.net/projects/joda-time/files/joda-time/1.6/joda-time-1.6.zip/download download]) to the classpath (use the `:cp` instruction).
 
 Now, let's import the org.scardf package and the `LocalDate` class, then create our first Scardf object:
 {{{
