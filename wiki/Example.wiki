@@ -1,4 +1,4 @@
-#summary Example graph containing data to be manipulated with example code elsewhere on this wiki
+#summary Example graph containing data to be manipulated with example code elsewhere on this wiki (`org.scardf` API)
 
 {{{
 import NodeConverter._
@@ -22,7 +22,7 @@ object PeopleVoc extends Vocabulary( "http://person.eg#" ) {
 }
 }}}
 
-Defining a graph with 
+A second vocabulary is about the family Doe. Here we have defined four resources (members of the family), constructed a graph with necessary information, and then [GraphAugmentation augmented] it to create the final graph.
 
 {{{
 import PeopleVoc._
@@ -36,7 +36,7 @@ object Doe extends Vocabulary( "http://doe.eg#" ) {
   private val aMale = isMale -> true
   private val aFemale = isMale -> false
 
-  private val basegraph = Graph.build(
+  private val basegraph = Graph(
     anna -( aPerson, aFemale, 
       name -> Branch( given -> "Anna" ), height -> 107, birthday -> "2004-04-14",
       likes -> swimming
@@ -60,3 +60,5 @@ object Doe extends Vocabulary( "http://doe.eg#" ) {
   val graph = Augment add { _ -family-> "Doe" } forEach { _/-/name } on basegraph
 }
 }}}
+
+For more snippets of Scardf in action, see AdvancedExamples.
