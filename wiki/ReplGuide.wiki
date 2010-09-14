@@ -1,3 +1,6 @@
+#summary A quick introduction using the Scala interpreter
+#labels Featured
+
 Let's get our toes wet using the Scala interactive interpreter, aka the REPL (Read-Eval-Print Loop). We'll construct this graph (adapted from the RDF Primer), written here in [http://www.w3.org/TeamSubmission/turtle Turtle]:
 
 {{{
