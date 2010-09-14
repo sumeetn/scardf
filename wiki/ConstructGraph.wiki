@@ -1,6 +1,6 @@
 A graph is a set of triples, which contain a subject node, a predicate (`UriRef`) and an RDF object (`Node`):
 {{{
-RdfTriple( john, height, TypedLiteral( 167, XSD.int ) )
+RdfTriple( john, height, TypedLiteral( "167", XSD.int ) )
 }}}
 
 Assigned objects may be RDF nodes, but also some general Scala objects: Strings, Ints, Booleans...
@@ -8,9 +8,9 @@ Assigned objects may be RDF nodes, but also some general Scala objects: Strings,
 john -height-> 167
 }}}
 
-Factory method `Graph.build` is used to construct graphs from branches.
+This expression actually evaluates to a "Branch", not a triple. Apply method of object `Graph` is used to construct graphs from branches.
 {{{
-Graph.build( john -height-> 167 )
+Graph( john -height-> 167 )
 }}}
 
 You can assign multiple properties to a single subject, with multiple values of the same property:
@@ -23,7 +23,7 @@ Assigning multiple values can be shortened using `ObjSet`:
 john -likes-> ObjSet( swimming, science )
 }}}
 
-You can nest other RDF nodes with their own statements, including anonymous (blank) nodes:
+You can nest other RDF nodes with their own statements, including branches to create anonymous (blank) nodes:
 {{{
 john -(
   name -> Branch( given -> "John", family -> "Doe" ),
