@@ -39,9 +39,9 @@ scala> val b = homepage -(
 b: org.scardf.Branch = <http://www.example.org/index.html>-( (<http://purl.org/dc/elements/1.1/#date>,{TypedLiteral("1999-08-16", <http://www.w3.org/2001/XMLSchema#date>)}), (<http://purl.org/dc/elements/1.1/#language>,{PlainLiteral("en")}), (<http://purl.org/dc/elements/1.1/#creator>,{<http://example.org/staffid/85740>}) )
 }}}
 
-This Scardf construct is a `Branch`, and it's only used as a tool in building graphs. To make a proper graph, we use the `Graph.build` method:
+This Scardf construct is a `Branch`, and it's only used as a tool in building graphs. To make a proper graph, we use the `Graph` object:
 {{{
-scala> val g = Graph.build( b )
+scala> val g = Graph( b )
 g: org.scardf.SetGraph = SetGraph[ 3 triples ]
 }}}
 
@@ -71,3 +71,7 @@ Predicates result in [Nodebags#Nodebags node bags]. You can extract single value
 scala> g/homepage/dc\"date"/NodeConverter.asLocalDate
 res3: org.joda.time.LocalDate = 1999-08-16
 }}}
+
+_to be continued..._
+
+For inspiration, you may want to take a look at the [AdvancedExamples] page.
