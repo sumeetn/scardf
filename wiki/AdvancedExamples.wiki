@@ -1,6 +1,10 @@
 <table cellpadding="5">
 <tt><td>*English*</td><td>*Scardf*</td></tt>
 <tr>
+<td>_John's children are Anna and Bob._</td>
+<td>`john -children-> List( anna, bob )`</td>
+</tr>
+<tr>
 <td>_Family members are resources of type "person"._</td>
 <td>`val familyMembers = g/-/having( RDF.Type -> person )`</td>
 </tr>
@@ -17,7 +21,7 @@
 <td>`familyMembers/where( _/likes contains science )`</td>
 </tr>
 <tr>
-<td>_Triples stating that something's height is less than 100 (cm)._</td>
+<td>_Triples stating that someone's height is less than 100._</td>
 <td>`g.triplesLike( Node, height, { h: Literal => asInt(h) < 100 } )`</td>
 </tr>
 </table>
