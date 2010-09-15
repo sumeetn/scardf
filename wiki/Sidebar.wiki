@@ -4,8 +4,9 @@
  * [NewModel Model]
  * [Nodebags]
  * [Converters]
- * [PredicateTrees]
- * [GraphAugmentation]
+ * [PredicateTrees Predicate trees]
+ * [GraphAugmentation Augmentation]
+ * [Changelog]
  * *old API* (`net.croz.scardf`)
    * [Overview Overview of API features]
    * [Vocabulary Constructing a vocabulary] 
