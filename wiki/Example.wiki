@@ -1,4 +1,4 @@
-#summary Example graph containing data to be manipulated with example code elsewhere on this wiki (`org.scardf` API)
+#summary Example graph containing data to be manipulated with example code elsewhere on this wiki (org.scardf API)
 
 {{{
 import NodeConverter._
