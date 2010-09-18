@@ -2,7 +2,7 @@
 
 
 
-Package ˙org.scardf.jena` allows you to use the power of the Jena library through the DSL programming interface of Scardf.
+Package `org.scardf.jena` allows you to use the power of the Jena library through the DSL programming interface of Scardf.
 
 
 The package features:
