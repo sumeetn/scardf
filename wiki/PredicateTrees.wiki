@@ -7,7 +7,7 @@ val pt1 = name~( given, family )
 
 Subgraph is extracted using the `growNew` and giving it a `GraphNode` from the source graph:
 {{{
-val newRoot = pt.growNew( graph/john )
+val newRoot = pt1.growNew( graph/john )
 }}}
 
 The result is a node `:john` in this new graph:
