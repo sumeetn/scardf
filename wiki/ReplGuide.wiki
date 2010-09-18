@@ -12,7 +12,7 @@ Let's get our toes wet using the Scala interactive interpreter, aka the REPL (Re
     dc:creator <http://www.example.org/staffid/85740> .
 }}}
 
-Start the interpreter. You will need to add Scardf ([http://code.google.com/p/scardf/downloads/list download]) and [http://joda-time.sourceforge.net Joda Time] ([http://sourceforge.net/projects/joda-time/files/joda-time/1.6/joda-time-1.6.zip/download download]) to the classpath (use the `:cp` instruction).
+Start the interpreter. You will need to add Scardf 0.5-SNAPSHOT ([http://code.google.com/p/scardf/downloads/list download]) and [http://joda-time.sourceforge.net Joda Time] ([http://sourceforge.net/projects/joda-time/files/joda-time/1.6/joda-time-1.6.zip/download download]) to the classpath (use the `:cp` instruction).
 
 Now, let's import the org.scardf package and the `LocalDate` class, then create our first Scardf object:
 {{{
