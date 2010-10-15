@@ -1,14 +1,16 @@
 #labels Deprecated
-Use scardf features to publish a RESTfull data retrieval API for a RDF datastore. 
+Use scardf features to publish a RESTfull data retrieval API for a RDF datastore. For this, we will use *[http://scalatra.org Scalatra]*, a tiny [http://www.sinatrarb.com Sinatra]-like web framework for Scala.
 
-As data we will use a popular example of a periodic table of elements at http://www.daml.org/2003/01/periodictable/PeriodicTable
-
-Let's say we have loaded this graph in a SPARQL-enabled graph through the val `dataGraph`.
+As data we will use a popular example of a periodic table of elements at http://www.daml.org/2003/01/periodictable/PeriodicTable - we have loaded this graph in a SPARQL-enabled graph ([ScardfOnJena JenaGraph]) through the val `dataGraph`.
 
 
 == Listing all chemical elements ==
 
-Scalatra rules are in the form _method_(_path_)
+Scalatra rules are in the form _method_(_path_). To list all chemical elements in the graph, 
+ * locate all nodes in graph which have RDF type Element
+ * build a graph consisting of these nodes expanded using a predicate tree
+ * augment this graph to include URIs to related Web resources
+
 {{{
 get("/elements") {
   val elements = findAll( fc -( RDF.Type -> rElement ) )
@@ -17,7 +19,7 @@ get("/elements") {
 }
 }}}
 
-=== Step 1: Finding the focus nodes in the data graph ===
+=== Step 1: Locating the focus nodes in the data graph ===
 
 {{{
 val fc = Blank()
@@ -49,20 +51,22 @@ def listContent( items: List[Node], pt: PredicateTree ) =
   items.map{ content( pt, _ ).triples }.foldLeft( new JenaGraph ){ _++_ }
 }}}
 
-=== Augmenting the content ===
 
+=== Step 3: Augmenting the content ===
+
+We need to augment the content graph with references to other REST resources. For details of each chemical element you go to /e/_symbol, e.g. `/e/He`. So we add a `href` property to each RDF node having `RDF.Type Element` by defining this augmenter.
 {{{
   val uriAugmenter = 
     Augment add { e =>
       e/RDF.Type.v match {
-        case Per.rElement => p -href-> ("/e/" + p/symbol.v)
+        case PeriodicTable.rElement => p -href-> ("/e/" + p/symbol.v)
         case _ => Branch( p )
       }
-    } forEach { _/-/having( RDF.Type ) }
+    } forEach { _/-/having( RDF.Type ) } get
 }}}  
 
 
-=== Response format ===
+=== Finally: Response format ===
 
 Of course, the resulting graphs should be serialized into an appropriate format, like Turtle. So we override Scalatra's `renderResponseBody` method:
 {{{
