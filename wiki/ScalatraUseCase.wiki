@@ -6,10 +6,10 @@ As data we will use a popular example of a periodic table of elements at http://
 
 == Listing all chemical elements ==
 
-Scalatra rules are in the form _method_(_path_). To list all chemical elements in the graph, 
- * locate all nodes in graph which have RDF type Element
- * build a graph consisting of these nodes expanded using a predicate tree
- * augment this graph to include URIs to related Web resources
+Scalatra rules are in the form _method_(_path_). To list all chemical elements in the graph, we need to follow these three steps:
+ # locate all nodes in graph which have RDF type Element
+ # build a graph consisting of these nodes expanded using a predicate tree
+ # augment this graph to include URIs to related Web resources
 
 {{{
 get("/elements") {
@@ -35,34 +35,35 @@ val elements = findAll( fc -( RDF.Type -> rElement ) )
 
 === Step 2: Expanding the selection ===
 
-For every using predicates RDF type, symbol, name and atomic number. 
+For every element we expand the content by taking triples from the located nodes for predicates: RDF type, symbol, name and atomic number. 
 {{{
 val elementSummaryPT = PredicateTree( RDF.Type, symbol, name, atomicNumber )
 }}}
 
 Expanding the selection of a single node using a predicate tree is achieved with the `CONSTRUCT` statement:
 {{{
-def content( pt: PredicateTree, anchor: Node ) =
+def content( anchor: Node, pt: PredicateTree ) =
   dataGraph.construct( pt buildPatternBlock anchor construct )
 }}}
 
+Since we have a list of RDF nodes, we'll add all these expansions:
 {{{
 def listContent( items: List[Node], pt: PredicateTree ) =
-  items.map{ content( pt, _ ).triples }.foldLeft( new JenaGraph ){ _++_ }
+  items.map{ content( _, pt ).triples }.foldLeft( new JenaGraph ){ _++_ }
 }}}
 
 
 === Step 3: Augmenting the content ===
 
-We need to augment the content graph with references to other REST resources. For details of each chemical element you go to /e/_symbol, e.g. `/e/He`. So we add a `href` property to each RDF node having `RDF.Type Element` by defining this augmenter.
+We need to augment the content graph with references to other REST resources. For details of each chemical element you go to /e/_symbol_, e.g. `/e/He`. So we add a `href` property to each RDF node having `RDF.Type Element` by defining this augmenter.
 {{{
-  val uriAugmenter = 
-    Augment add { e =>
-      e/RDF.Type.v match {
-        case PeriodicTable.rElement => p -href-> ("/e/" + p/symbol.v)
-        case _ => Branch( p )
-      }
-    } forEach { _/-/having( RDF.Type ) } get
+val uriAugmenter = 
+  Augment add { element =>
+    element/RDF.Type.v match {
+      case PeriodicTable.rElement => element -href-> ("/e/" + element/symbol.v)
+      case _ => Branch( element )
+    }
+  } forEach { _/-/having( RDF.Type ) } get
 }}}  
 
 
@@ -85,8 +86,8 @@ override protected def renderResponseBody( actionResult: Any ) =
 
 {{{
 get("/e/:symbol") {
-  val e = findOne( fc -( RDF.Type -> rElement, symbol -> params("symbol") ) )
-  uriAugmenter augmented singleContent( elementDetailedPT, e )
+  val element = findOne( fc -( RDF.Type -> rElement, symbol -> params("symbol") ) )
+  uriAugmenter augmented content( element, elementDetailedPT )
 }
 }}}
 
