@@ -3,22 +3,33 @@ Identifier declaration is simple:
 
 {{{
 on( GET /PT.Element/PT.symbol ) {
-  Describe single elementDetails
+  describeSingle( elementDetails )
 }
 }}}
 
-It says something like:
-  On every GET request matching the pattern / _Element_ / _symbol of the element_ describe a single domain concept with these properties, using the `elementDetails` predicate tree.
+It says something like this:
+  On every GET request matching the pattern /element/<symbol>, describe a single domain concept with these properties, using the `elementDetails` predicate tree.
 
 First we'll need a *domain graph* in which we describe some properties of these concepts.
 {{{
-pt:Element rdf:Type rdfs:Class ,
-           :uriLabel "element" .
-pt:symbol  rdf:Type rdf:Property ,
+pt:Element rdf:Type   rdfs:Class ,
+           :uriLabel  "element" .
+pt:symbol  rdf:Type   rdf:Property ,
            rdfs:range xsd:string .
 }}}
 
-URI path `/element/Si` is tested against the pattern in the declaration. Since the first pattern segment is described in the domain graph as an RDF resource of type `rdfs:Class`, it 
+Let's test this pattern with URI path `/element/Si` (silicon).
+
+Since the first pattern segment is described in the domain graph as an RDF resource of type `rdfs:Class`, it is cast as a "set type" segment. This means that the tested path segment should match the URI label property of the pattern ("element"), which it does. This segments adds a statement `_:fc rdf:type pt:Element` to the identity graph.
+
+Second pattern segment is an `rdf:Property`, making it a "property value" segment. These check path segments according to their range. In this case, the range is `xsd:string` which allows any value. This segments adds a statement `_:fc pt:symbol "Si"` to the identity graph.
+
+{{{
+_:fc rdf:type  pt:Element ;
+     pt:symbol "Si" .
+}}}
+
+This pattern graph is used to construct a SPARQL query:
 
 {{{
 SELECT ?fc
