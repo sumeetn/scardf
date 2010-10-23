@@ -3,10 +3,14 @@ Identifier declaration is simple:
 
 {{{
 on( GET /PT.Element/PT.symbol ) {
-  Grow single elementDetails
+  Describe single elementDetails
 }
 }}}
 
+It says something like:
+  On every GET request matching the pattern / _Element_ / _symbol of the element_ describe a single domain concept with these properties, using the `elementDetails` predicate tree.
+
+First we'll need a *domain graph* in which we describe some properties of these concepts.
 {{{
 pt:Element rdf:Type rdfs:Class ,
            :uriLabel "element" .
