@@ -8,7 +8,7 @@ on( GET /PT.Element/PT.atomicNumber ) {
 }}}
 
 It says something like this:
-  On every GET request matching the pattern /element/{symbol}, describe a single domain concept with these properties, using the `elementDetails` predicate tree.
+  On every GET request matching the pattern /element/{_atomic number_}, describe a single domain concept with these properties, using the `elementDetails` predicate tree.
 
 First we'll need a *domain graph* in which we describe some properties of these concepts.
 {{{
