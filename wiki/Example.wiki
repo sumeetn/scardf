@@ -4,21 +4,21 @@
 import NodeConverter._
 
 object PeopleVoc extends Vocabulary( "http://person.eg#" ) {
-  val person = ÷( "Person" )
-  val hobby = ÷( "Hobby" )
-  val swimming = ÷( "Swimming" )
-  val science = ÷( "Science" )
-  val name = ÷( "name" )
-  val given = ÷( "given" )
-  val family = ÷( "family" )
-  val isMale = ÷( "isMale" )
-  val height = ÷( "height" )
-  val weight = ÷( "weight" )
-  val likes = ÷( "likes" )
-  val spouse = ÷( "spouse" )
-  val children = ÷( "children" )
-  val birthday = ÷( "birthday" )
-  val age = ÷( "age" )
+  val person = uriref( "Person" )
+  val hobby = uriref( "Hobby" )
+  val swimming = uriref( "Swimming" )
+  val science = uriref( "Science" )
+  val name = prop( "name" )
+  val given = propString( "given" )
+  val family = propString( "family" )
+  val isMale = uriref( "isMale" )
+  val height = propInt( "height" )
+  val weight = propInt( "weight" )
+  val likes = prop( "likes" )
+  val spouse = prop( "spouse" )
+  val children = prop( "children" )
+  val birthday = prop( "birthday" )
+  val age = propInt( "age" )
 }
 }}}
 
