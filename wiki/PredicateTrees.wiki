@@ -1,4 +1,4 @@
-A predicate tree is a construct used for extracting a subset of a larger RDF graph and a given root node.
+A predicate tree is a construct used for extracting a subset of a larger RDF graph from a given root node.
 
 Predicate tree consists of URI references, connected together using the tilde operator: 
 {{{
