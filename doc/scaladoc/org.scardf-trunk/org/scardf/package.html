@@ -1,0 +1,825 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>Scaladoc for org.scardf</title>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		      <script type="text/javascript" src="../../lib/jquery.js"></script>
+          
+      <link href="../../lib/template.css" rel="stylesheet" type="text/css" media="screen" />
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+    
+        </head>
+        <body class="value">
+
+      <p id="owner"><a href="../package.html" class="extype" name="org">org</a></p>
+
+      <div id="definition">
+        <img src="../../lib/package_big.png" />
+        <h1>scardf</h1>
+      </div>
+
+      <h4 class="signature" id="signature">
+      <span class="kind">package</span>
+      <span class="symbol">
+        <span class="name">scardf</span>
+      </span>
+      </h4>
+      <div class="fullcomment" id="comment"></div>
+      
+      <div id="template">
+
+        <div id="mbrsel">
+          
+          <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in">Public</li><li class="all out">All</li></ol>
+          </div>
+        </div>
+        
+                
+        
+        <div class="members" id="types">
+              <h3>Type Members</h3>
+              <ol><li visbl="pub" name="org.scardf.AugPreparator">
+      <h4 class="signature"><a href="AugPreparator.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">AugPreparator</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.Augmenter">
+      <h4 class="signature"><a href="Augmenter.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">Augmenter</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.Blank">
+      <h4 class="signature"><a href="Blank.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">Blank</span><span class="params">(<span name="id">id: String</span>)</span><span class="result"> extends SubjectNode with Product</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">A blank node.</p>
+    </li><li visbl="pub" name="org.scardf.Branch">
+      <h4 class="signature"><a href="Branch.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">Branch</span><span class="params">(<span name="root">root: SubjectNode</span>, <span name="assignments">assignments: (UriRef, Twig)*</span>)</span><span class="result"> extends Twig with Product</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.CompositeAugmenter">
+      <h4 class="signature"><a href="CompositeAugmenter.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">CompositeAugmenter</span><span class="result"> extends Augmenter</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.DateFormatter">
+      <h4 class="signature"><a href="DateFormatter.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">DateFormatter</span><span class="result"> extends PredAugmenter</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.FindMakeAugmenter">
+      <h4 class="signature"><a href="FindMakeAugmenter.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">FindMakeAugmenter</span><span class="result"> extends Augmenter</span>
+      </span>
+      </a></h4>
+      
+            
+            <div class="fullcomment"><div class="block">
+          attributes: abstract 
+        </div></div>
+          
+    </li><li visbl="pub" name="org.scardf.GNProperty">
+      <h4 class="signature"><a href="GNProperty.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">GNProperty</span><span class="result"> extends Property[GraphNode]</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Properties with range of subject nodes.</p>
+    </li><li visbl="pub" name="org.scardf.Graph">
+      <h4 class="signature"><a href="Graph.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">Graph</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">An RDF graph.</p>
+    </li><li visbl="pub" name="org.scardf.GraphList">
+      <h4 class="signature"><a href="GraphList.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">GraphList</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="gn">gn: GraphNode</span>, <span name="nc">nc: NodeToValueConverter[E]</span>)</span><span class="result"> extends RdfList[E] with Product</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.GraphNode">
+      <h4 class="signature"><a href="GraphNode.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">GraphNode</span><span class="params">(<span name="node">node: SubjectNode</span>, <span name="graph">graph: Graph</span>)</span><span class="result"> extends NodeFromGraph with Product</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.GraphNodeConverter">
+      <h4 class="signature"><a href="GraphNodeConverter.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">GraphNodeConverter</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends NodeToValueConverter[T]</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.IndexedGraph">
+      <h4 class="signature"><a href="IndexedGraph.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">IndexedGraph</span><span class="result"> extends Graph</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Adds triples index to the in-memory graph.</p>
+    </li><li visbl="pub" name="org.scardf.LangTag">
+      <h4 class="signature"><a href="LangTag.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">LangTag</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">A language tag, used in @{link PlainLiteral plain literals}.</p>
+    </li><li visbl="pub" name="org.scardf.ListBranch">
+      <h4 class="signature"><a href="ListBranch.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">ListBranch</span><span class="params">(<span name="l">l: List[Any]</span>)</span><span class="result"> extends Twig with Product</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.Literal">
+      <h4 class="signature"><a href="Literal.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">Literal</span><span class="result"> extends Node with NodeFromGraph</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">A literal.</p>
+    </li><li visbl="pub" name="org.scardf.LiteralConverter">
+      <h4 class="signature"><a href="LiteralConverter.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">LiteralConverter</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends NodeToValueConverter[T]</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.MutableGraph">
+      <h4 class="signature"><a href="MutableGraph.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">MutableGraph</span><span class="result"> extends Graph</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Graphs with mutable state.</p>
+    </li><li visbl="pub" name="org.scardf.MutableSetGraph">
+      <h4 class="signature"><a href="MutableSetGraph.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">MutableSetGraph</span><span class="result"> extends IndexedGraph with MutableGraph</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Triples can be added to this graph by mutating its triples set.</p>
+    </li><li visbl="pub" name="org.scardf.Node">
+      <h4 class="signature"><a href="Node.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">Node</span><span class="result"> extends TermPlace</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">RDF node; either a URI reference, a blank node, or a literal.</p>
+    </li><li visbl="pub" name="org.scardf.NodeBag">
+      <h4 class="signature"><a href="NodeBag.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">NodeBag</span><span class="params">(<span name="nodes">nodes: List[Node]</span>, <span name="graph">graph: Graph</span>)</span><span class="result"> extends Traversable[Node] with Product</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.NodeBagConverter">
+      <h4 class="signature"><a href="NodeBagConverter.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">NodeBagConverter</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends (NodeBag) ⇒ T</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Bag converters take a node bag and return object of type T (which, in turn, may also be a node bag).</p>
+    </li><li visbl="pub" name="org.scardf.NodeFilter">
+      <h4 class="signature"><a href="NodeFilter.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">NodeFilter</span><span class="result"> extends NodeBagConverter[NodeBag]</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">A node bag converter that creates a new bag in the same graph,
+with only those nodes that satisfy given filter function.</p>
+    </li><li visbl="pub" name="org.scardf.NodeFromGraph">
+      <h4 class="signature"><a href="NodeFromGraph.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">NodeFromGraph</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Either a subject node in the context of a graph,
+or a literal by itself.</p>
+    </li><li visbl="pub" name="org.scardf.NodeIndex">
+      <h4 class="signature"><a href="NodeIndex.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">NodeIndex</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.NodeToBagConverter">
+      <h4 class="signature"><a href="NodeToBagConverter.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">NodeToBagConverter</span><span class="result"> extends (NodeFromGraph) ⇒ NodeBag</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">A node-to-bag converter takes a node from graph and returns a bag of nodes from the same graph.</p>
+    </li><li visbl="pub" name="org.scardf.NodeToValueConverter">
+      <h4 class="signature"><a href="NodeToValueConverter.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">NodeToValueConverter</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends (NodeFromGraph) ⇒ T</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Node-to-value converters take a single {NodeFromGraph} and return object of type T.</p>
+    </li><li visbl="pub" name="org.scardf.NodebagAugmenter">
+      <h4 class="signature"><a href="NodebagAugmenter.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">NodebagAugmenter</span><span class="result"> extends Augmenter</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.NumQVar">
+      <h4 class="signature"><a href="NumQVar.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">NumQVar</span><span class="result"> extends QVar</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.ObjSet">
+      <h4 class="signature"><a href="ObjSet.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">ObjSet</span><span class="result"> extends Twig</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.PFAugmenter">
+      <h4 class="signature"><a href="PFAugmenter.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">PFAugmenter</span><span class="result"> extends Augmenter</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.PatternBlock">
+      <h4 class="signature"><a href="PatternBlock.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">PatternBlock</span><span class="params">(<span name="tt">tt: List[TemplateTriple]</span>, <span name="rb">rb: List[PatternBlock]</span>, <span name="ob">ob: List[PatternBlock]</span>)</span><span class="result"> extends Product</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.PlainLiteral">
+      <h4 class="signature"><a href="PlainLiteral.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">PlainLiteral</span><span class="params">(<span name="lexicalForm">lexicalForm: String</span>, <span name="langTagOpt">langTagOpt: Option[LangTag]</span>)</span><span class="result"> extends Literal with Product</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Plain literal, a lexic form and optional language tag.</p>
+    </li><li visbl="pub" name="org.scardf.PredAugmenter">
+      <h4 class="signature"><a href="PredAugmenter.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">PredAugmenter</span><span class="result"> extends Augmenter</span>
+      </span>
+      </a></h4>
+      
+            
+            <div class="fullcomment"><div class="block">
+          attributes: abstract 
+        </div></div>
+          
+    </li><li visbl="pub" name="org.scardf.PredicateConstruct">
+      <h4 class="signature"><a href="PredicateConstruct.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">PredicateConstruct</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.PredicateTree">
+      <h4 class="signature"><a href="PredicateTree.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">PredicateTree</span><span class="result"> extends PredicateConstruct</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">A predicate tree is a pair of mappings between URI references and other (possibly empty) predicate trees.</p>
+    </li><li visbl="pub" name="org.scardf.Property">
+      <h4 class="signature"><a href="Property.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">Property</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends UriRef</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">A UriRef that can be used as a predicate in triples,
+with specific value type (corresponding to range of RDF properties).</p>
+    </li><li visbl="pub" name="org.scardf.QVar">
+      <h4 class="signature"><a href="QVar.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">QVar</span><span class="result"> extends TermPlace</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">An object representing a variable in queries.</p>
+    </li><li visbl="pub" name="org.scardf.QueryEngine">
+      <h4 class="signature"><a href="QueryEngine.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">QueryEngine</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.RdfList">
+      <h4 class="signature"><a href="RdfList.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">RdfList</span><span class="tparams">[<span name="E">E</span>]</span><span class="result"> extends Traversable[E]</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.RdfTraversalException">
+      <h4 class="signature"><a href="RdfTraversalException.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">RdfTraversalException</span><span class="params">(<span name="msg">msg: String</span>)</span><span class="result"> extends Exception with Product</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.RdfTriple">
+      <h4 class="signature"><a href="RdfTriple.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">RdfTriple</span><span class="params">(<span name="subj">subj: SubjectNode</span>, <span name="pred">pred: UriRef</span>, <span name="obj">obj: Node</span>)</span><span class="result"> extends Product</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.SerializationFormat">
+      <h4 class="signature"><a href="SerializationFormat.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">SerializationFormat</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+            
+            <div class="fullcomment"><div class="block">
+          attributes: abstract 
+        </div></div>
+          
+    </li><li visbl="pub" name="org.scardf.Serializator">
+      <h4 class="signature"><a href="Serializator.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">Serializator</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Writes graph to a Writer and reads from a Reader based on a given format.</p>
+    </li><li visbl="pub" name="org.scardf.SetGraph">
+      <h4 class="signature"><a href="SetGraph.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">SetGraph</span><span class="result"> extends IndexedGraph</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Immutable RDF graph stored in memory.</p>
+    </li><li visbl="pub" name="org.scardf.SimpleNodeConverter">
+      <h4 class="signature"><a href="SimpleNodeConverter.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">SimpleNodeConverter</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends NodeToValueConverter[T]</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.SnBagAugmenter">
+      <h4 class="signature"><a href="SnBagAugmenter.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">SnBagAugmenter</span><span class="result"> extends Augmenter</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.SubPredPair">
+      <h4 class="signature"><a href="SubPredPair.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">SubPredPair</span><span class="params">(<span name="sub">sub: SubjectNode</span>, <span name="pred">pred: UriRef</span>)</span><span class="result"> extends Product</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.SubjectNode">
+      <h4 class="signature"><a href="SubjectNode.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">SubjectNode</span><span class="result"> extends Node</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">RDF node that can be used as a subject of a triple.</p>
+    </li><li visbl="pub" name="org.scardf.TemplateFactory">
+      <h4 class="signature"><a href="TemplateFactory.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">TemplateFactory</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.TemplateGraph">
+      <h4 class="signature"><a href="TemplateGraph.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">TemplateGraph</span><span class="params">(<span name="v">v: QVar</span>, <span name="ttriples">ttriples: Iterable[TemplateTriple]</span>)</span><span class="result"> extends Product</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.TemplateTriple">
+      <h4 class="signature"><a href="TemplateTriple.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">TemplateTriple</span><span class="params">(<span name="s">s: TermPlace</span>, <span name="p">p: TermPlace</span>, <span name="o">o: TermPlace</span>)</span><span class="result"> extends Product</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.TermPlace">
+      <h4 class="signature"><a href="TermPlace.html">
+      <span class="kind">trait</span>
+      <span class="symbol">
+        <span class="name">TermPlace</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">A node or a variable, something that can be placed as a term in a triple.</p>
+    </li><li visbl="pub" name="org.scardf.Twig">
+      <h4 class="signature"><a href="Twig.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">Twig</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+            
+            <div class="fullcomment"><div class="block">
+          attributes: abstract 
+        </div></div>
+          
+    </li><li visbl="pub" name="org.scardf.TypeNodeConverter">
+      <h4 class="signature"><a href="TypeNodeConverter.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">TypeNodeConverter</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends LiteralConverter[T]</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Converts a literal to an object based on the type URI and a conversion function fn.</p>
+    </li><li visbl="pub" name="org.scardf.TypedLiteral">
+      <h4 class="signature"><a href="TypedLiteral.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">TypedLiteral</span><span class="params">(<span name="lexicalForm">lexicalForm: String</span>, <span name="datatypeUriRef">datatypeUriRef: UriRef</span>)</span><span class="result"> extends Literal with Product</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Typed literal, consisting of a lexical form and a datatype URI reference.</p>
+    </li><li visbl="pub" name="org.scardf.UriRef">
+      <h4 class="signature"><a href="UriRef.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">UriRef</span><span class="result"> extends SubjectNode with NodeToBagConverter</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">URI reference, a kind of a subject node.</p>
+    </li><li visbl="pub" name="org.scardf.Vocabulary">
+      <h4 class="signature"><a href="Vocabulary.html">
+      <span class="kind">class</span>
+      <span class="symbol">
+        <span class="name">Vocabulary</span><span class="params">(<span name="prefix">prefix: String</span>)</span><span class="result"> extends Product</span>
+      </span>
+      </a></h4>
+      
+    </li></ol>
+            </div>
+        
+        <div class="members" id="values">
+              <h3>Value Members</h3>
+              <ol><li visbl="pub" name="org.scardf.Augment">
+      <h4 class="signature"><a href="Augment$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">Augment</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.Blank">
+      <h4 class="signature"><a href="Blank$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">Blank</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.Branch">
+      <h4 class="signature"><a href="Branch$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">Branch</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.GNProperty">
+      <h4 class="signature"><a href="GNProperty$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">GNProperty</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.Graph">
+      <h4 class="signature"><a href="Graph$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">Graph</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Factory for a SetGraph.</p>
+    </li><li visbl="pub" name="org.scardf.LangTag">
+      <h4 class="signature"><a href="LangTag$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">LangTag</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.Literal">
+      <h4 class="signature"><a href="Literal$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">Literal</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.N3">
+      <h4 class="signature"><a href="N3$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">N3</span><span class="result"> extends SerializationFormat</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.NTriple">
+      <h4 class="signature"><a href="NTriple$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">NTriple</span><span class="result"> extends SerializationFormat</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.NTriplesParser">
+      <h4 class="signature"><a href="NTriplesParser$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">NTriplesParser</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Attempting to follow the EBNF at http://www.</p>
+    </li><li visbl="pub" name="org.scardf.Node">
+      <h4 class="signature"><a href="Node$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">Node</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.NodeBag">
+      <h4 class="signature"><a href="NodeBag$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">NodeBag</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.NodeBagConverter">
+      <h4 class="signature"><a href="NodeBagConverter$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">NodeBagConverter</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.NodeConverter">
+      <h4 class="signature"><a href="NodeConverter$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">NodeConverter</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.ObjSet">
+      <h4 class="signature"><a href="ObjSet$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">ObjSet</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.PlainLiteral">
+      <h4 class="signature"><a href="PlainLiteral$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">PlainLiteral</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.PredicateTree">
+      <h4 class="signature"><a href="PredicateTree$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">PredicateTree</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.Property">
+      <h4 class="signature"><a href="Property$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">Property</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.QVar">
+      <h4 class="signature"><a href="QVar$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">QVar</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.RDF">
+      <h4 class="signature"><a href="RDF$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">RDF</span><span class="result"> extends Vocabulary</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.RdfNil">
+      <h4 class="signature"><a href="RdfNil$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">RdfNil</span><span class="result"> extends RdfList[Nothing]</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.RdfXml">
+      <h4 class="signature"><a href="RdfXml$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">RdfXml</span><span class="result"> extends SerializationFormat</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.SubjectNode">
+      <h4 class="signature"><a href="SubjectNode$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">SubjectNode</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.TemplateFactory">
+      <h4 class="signature"><a href="TemplateFactory$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">TemplateFactory</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.Turtle">
+      <h4 class="signature"><a href="Turtle$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">Turtle</span><span class="result"> extends SerializationFormat</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.Twig">
+      <h4 class="signature"><a href="Twig$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">Twig</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.UriRef">
+      <h4 class="signature"><a href="UriRef$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">UriRef</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.X">
+      <h4 class="signature"><a href="X$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">X</span><span class="result"> extends QVar</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.X1">
+      <h4 class="signature"><a href="X1$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">X1</span><span class="result"> extends QVar</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.X2">
+      <h4 class="signature"><a href="X2$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">X2</span><span class="result"> extends QVar</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.X3">
+      <h4 class="signature"><a href="X3$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">X3</span><span class="result"> extends QVar</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.XSD">
+      <h4 class="signature"><a href="XSD$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">XSD</span><span class="result"> extends Vocabulary</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.having">
+      <h4 class="signature"><a href="having$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">having</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      <p class="comment cmt">Filter factory object.</p>
+    </li><li visbl="pub" name="org.scardf.jena">
+      <h4 class="signature"><a href="jena/package.html">
+      <span class="kind">package</span>
+      <span class="symbol">
+        <span class="name">jena</span>
+      </span>
+      </a></h4>
+      
+    </li><li visbl="pub" name="org.scardf.where">
+      <h4 class="signature"><a href="where$.html">
+      <span class="kind">object</span>
+      <span class="symbol">
+        <span class="name">where</span><span class="result"> extends AnyRef</span>
+      </span>
+      </a></h4>
+      
+    </li></ol>
+            </div>
+                
+      </div>
+      
+      <div id="tooltip"></div>
+      
+    </body>
+      </html>
