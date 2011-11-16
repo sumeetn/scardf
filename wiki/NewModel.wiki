@@ -1,4 +1,3 @@
-
 ==Design goals==
 
 The model closely matches concepts and terminology of the RDF specification.
@@ -16,7 +15,7 @@ The hierarchy follows the RDF model. Nodes can be either literals or subject nod
 Literals are either plain (with optional language tag) or typed. 
 Subject nodes are either blank nodes or URI references.
 
-http://yuml.me/diagram/scruffy%3B/class/%5BNode%5D%5E-%5BSubjectNode%5D%2C%20%5BSubjectNode%5D%5E-%5BUriRef|uri%5D%2C%20%5BSubjectNode%5D%5E-%5BBlank|id%5D%2C%20%5BNode%5D%5E-%5BLiteral%5D%2C%20%5BLiteral|lexicalForm%5D%5E-%5BPlainLiteral|langTagOpt%5D%2C%20%5BLiteral%5D%5E-%5BTypedLiteral|datatypeUriRef%5D%2C%20%5BPlainLiteral%5D-.-%3E%5BLangTag|code%5D.png
+http://yuml.me/12377f42
 
 
 ==Triples and graphs==
@@ -42,4 +41,3 @@ http://yuml.me/diagram/scruffy%3B/class/%5BNodeFromGraph%7Cnode%5D%5E-.-%5BGraph
 [Nodebags Node bags] are unordered collections of nodes *from the same graph*.
 
 http://yuml.me/diagram/scruffy/class/[NodeBag]-%3E[Graph],%20[NodeBag]-*%3E[Node].png
-
