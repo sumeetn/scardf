@@ -15,7 +15,7 @@ The hierarchy follows the RDF model. Nodes can be either literals or subject nod
 Literals are either plain (with optional language tag) or typed. 
 Subject nodes are either blank nodes or URI references.
 
-http://yuml.me/12377f42
+http://yuml.me/diagram/scruffy;/class/%5BNode%5D%5E-%5BSubjectNode%5D,%20%5BSubjectNode%5D%5E-%5BUriRef%5D,%20%5BSubjectNode%5D%5E-%5BBlank%5D,%20%5BNode%5D%5E-%5BLiteral%5D,%20%5BLiteral%5D%5E-%5BPlainLiteral%5D,%20%5BLiteral%5D%5E-%5BTypedLiteral%5D,%20%5BPlainLiteral%5D-.-%3E%5BLangTag%5D.png
 
 
 ==Triples and graphs==
@@ -33,7 +33,7 @@ When traversing graphs, it is useful to have a reference to a node in the contex
 Literals are not associated with any particular any graph, since they cannot be a subject of any triple.
 `NodeFromGraph` is a trait that encompasses literals and graph nodes.
 
-http://yuml.me/diagram/scruffy%3B/class/%5BNodeFromGraph%7Cnode%5D%5E-.-%5BGraphNode%5D%2C%20%5BNodeFromGraph%5D%5E-.-%5BLiteral%7Cnode%20%3D%20this%5D%2C%20%5BGraphNode%7Cgraph%5D-graph%3E%5BGraph%5D%2C%20%5BGraphNode%5D-node%3E%5BSubjectNode%5D.png
+http://yuml.me/diagram/scruffy;/class/%5BNodeFromGraph%5D%5E-.-%5BGraphNode%5D,%20%5BNodeFromGraph%5D%5E-.-%5BLiteral%5D,%20%5BGraphNode%5D-graph%3E%5BGraph%5D,%20%5BGraphNode%5D-node%3E%5BSubjectNode%5D.png
 
 
 ==Node bags==
