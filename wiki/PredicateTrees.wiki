@@ -65,5 +65,3 @@ WHERE {
   }
 }
 }}}
-
-[http://dl.dropbox.com/u/6703346/PredicateTrees.pdf Presentation] at WIMS 2012. [https://dl.dropbox.com/u/6703346/PredicateTrees.pptx ppt]
