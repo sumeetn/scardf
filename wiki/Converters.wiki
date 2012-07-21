@@ -17,7 +17,7 @@ TypedLiteral( "10", XSD.integer )/asInt == 10
 Simple values can be extracted from non-typed literals as well,
 if the lexical value can be parsed: 
 {{{
-PlainLiteral( "10" )/asInt must_== 10
+PlainLiteral( "10" )/asInt == 10
 }}}
 
 There are other converters for other types of literals - you can find them in the `org.scardf.NodeConverter` object.
